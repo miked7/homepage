@@ -1,0 +1,17 @@
+.card-user-info {
+  height: 322px;
+  margin-left: 172px;
+  position: relative;
+  width: 340px;
+}
+
+.social-stack {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  left: 44px;
+  position: absolute;
+  top: 101px;
+  width: 252px;
+}
+

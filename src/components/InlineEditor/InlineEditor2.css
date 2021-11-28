@@ -1,0 +1,55 @@
+body {
+    background: #5f45cc;
+    color: #e9e9e9;
+  }
+  .App {
+    font-family: sans-serif;
+    text-align: left;
+    margin: 4rem 10rem;
+  }
+  
+  /* these make sure it can work in any text element */
+  .inline-text_copy--active {
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    border-bottom: 1px dashed #999999;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .inline-text_copy--active--readonly {
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    border-bottom: 0px;
+    outline: none;
+  }
+
+  .inline-text_input--active {
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
+    text-align: left;
+  }
+
+  .inline-text_copy--hidden,
+  .inline-text_input--hidden {
+    display: none;
+  }
+
+  .edit-icon {
+      margin: 0px 0px 0px 7px;
+  }
+  

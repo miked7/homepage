@@ -1,0 +1,17 @@
+.card-project {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  min-width: 308px;
+  position: relative;
+}
+
+.image-project {
+  height: 120px;
+  width: 120px;
+}
+
+.card-project.card-project-1 {
+  margin-left: 36px;
+}
+

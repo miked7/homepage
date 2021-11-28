@@ -1,0 +1,29 @@
+.text-box-bio {
+  align-items: flex-start;
+  display: flex;
+  height: 76px;
+  margin-top: 7px;
+  min-width: 340px;
+}
+
+.bio {
+  color: var(--white);
+  line-height: 19px;
+  min-height: 76px;
+  text-align: center;
+  width: 340px;
+}
+
+/* input {
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+  color: #d3d3d3
+}
+*/
+input:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+  color: black
+}
+

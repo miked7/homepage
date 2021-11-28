@@ -1,0 +1,29 @@
+.button-sign-in {
+  align-items: flex-start;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  min-width: 106px;
+}
+
+.overlap-group {
+  align-items: flex-start;
+  border: 2px solid var(--anakiwa);
+  border-radius: 4px;
+  display: flex;
+  height: 42px;
+  margin-top: -1.0px;
+  min-width: 108px;
+  padding: 5.0px 18.0px;
+}
+
+.label {
+  color: var(--anakiwa);
+  font-weight: 700;
+  line-height: 28px;
+  min-height: 28px;
+  min-width: 67px;
+  text-align: center;
+  white-space: nowrap;
+}
+

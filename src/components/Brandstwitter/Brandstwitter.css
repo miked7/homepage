@@ -1,0 +1,13 @@
+.brandstwitter {
+  align-items: flex-start;
+  display: flex;
+  height: 16px;
+  min-width: 16px;
+  padding: 1px 0;
+}
+
+.icon-style {
+  height: 13px;
+  width: 16px;
+}
+

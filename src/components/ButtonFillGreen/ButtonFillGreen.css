@@ -1,0 +1,30 @@
+.button-sign-in-copy {
+  align-items: flex-start;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-left: 24px;
+  min-width: 302px;
+}
+
+.overlap-group1 {
+  align-items: center;
+  background-color: var(--anakiwa);
+  border-radius: 4px;
+  display: flex;
+  height: 42px;
+  margin-top: -1.0px;
+  min-width: 304px;
+  padding: 0 18.0px;
+}
+
+.label-1 {
+  color: #131415;
+  font-weight: 700;
+  line-height: 28px;
+  min-height: 28px;
+  min-width: 268px;
+  text-align: center;
+  white-space: nowrap;
+}
+

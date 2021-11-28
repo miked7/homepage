@@ -1,0 +1,98 @@
+:root { 
+  --anakiwa: #8cfbf5;
+  --eerie-black: #1c2124;
+  --mountain-mist: #969696;
+  --polar: #e1f9f6;
+  --quill-gray: #d7d4d4;
+  --white: #ffffff;
+ 
+  --font-size-13px: 13px;
+  --font-size-23px: 23px;
+  --font-size-32px: 32px;
+  --font-size-l: 17px;
+  --font-size-m: 16px;
+  --font-size-s: 15px;
+  --font-size-xl: 19px;
+  --font-size-xs: 14px;
+  --font-size-xxs: 12px;
+  --font-size-xxxs: 11px;
+ 
+  --font-family-arial-italicmt: "Arial-ItalicMT", Helvetica;
+  --font-family-inter: "Inter", Helvetica;
+  --font-family-sfprotext-bold: "SFProText-Bold", Helvetica;
+  --font-family-sfprotext-medium: "SFProText-Medium", Helvetica;
+  --font-family-sfprotext-regular: "SFProText-Regular", Helvetica;
+}
+.bio-quote {
+  font-family: var(--font-family-arial-italicmt);
+  font-size: var(--font-size-xl);
+  letter-spacing: 0.23px;
+}
+
+.titleleft {
+  font-family: var(--font-family-sfprotext-bold);
+  font-size: var(--font-size-23px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.28px;
+}
+
+.smallfont-family-1centerblack-bold {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.bio-text {
+  font-family: var(--font-family-sfprotext-regular);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.19px;
+}
+
+.subtitles {
+  font-family: var(--font-family-sfprotext-bold);
+  font-size: var(--font-size-13px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+}
+
+.profile-description {
+  font-family: var(--font-family-sfprotext-regular);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.18px;
+}
+
+.artist-namedesktop {
+  font-family: var(--font-family-sfprotext-medium);
+  font-size: var(--font-size-32px);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -1.81px;
+}
+
+.sfprotext-bold-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-sfprotext-bold);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.sfprotext-medium-white-11px {
+  color: var(--white);
+  font-family: var(--font-family-sfprotext-medium);
+  font-size: var(--font-size-xxxs);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.border-1px-mountain-mist {
+  border: 1px solid var(--mountain-mist);
+}

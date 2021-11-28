@@ -1,0 +1,28 @@
+.text-project-title {
+  height: 37px;
+  margin-bottom: 11.0px;
+  margin-left: 24px;
+  width: 164px;
+}
+
+.project-text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-name {
+  font-weight: 700;
+  letter-spacing: 0.17px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.project-description {
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  line-height: 13px;
+  margin-top: 8px;
+  white-space: nowrap;
+}
+

@@ -1,0 +1,11 @@
+.social-row {
+  align-items: center;
+  display: flex;
+  height: 18px;
+  position: relative;
+}
+
+.social-row.social-row-1 {
+  margin-top: 12px;
+}
+

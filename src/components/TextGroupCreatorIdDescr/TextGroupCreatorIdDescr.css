@@ -1,0 +1,35 @@
+.creator-id-description {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 340px;
+}
+
+.creator-id-stack {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.title-2 {
+  color: var(--anakiwa);
+  font-weight: 500;
+  line-height: 38px;
+  white-space: nowrap;
+}
+
+.creator-description {
+  color: #fdfdfd;
+  font-family: var(--font-family-sfprotext-regular);
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 29px;
+  margin-top: 2px;
+  opacity: 0.97;
+  white-space: nowrap;
+}
+

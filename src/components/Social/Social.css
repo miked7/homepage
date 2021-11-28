@@ -1,0 +1,23 @@
+.social-2 {
+  align-items: center;
+  display: flex;
+}
+
+.stacked-group {
+  align-items: center;
+  display: flex;
+  height: 18px;
+  position: relative;
+}
+
+.social-handle {
+  color: var(--quill-gray);
+  line-height: 18px;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+.social-2.social-1 {
+  margin-left: 12px;
+}
+

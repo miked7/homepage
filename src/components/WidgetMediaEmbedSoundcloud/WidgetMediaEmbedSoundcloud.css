@@ -1,0 +1,50 @@
+.widget-embed-soundcloud {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 485px;
+  width: 340px;
+}
+
+.description {
+  color: var(--white);
+  font-weight: 700;
+  line-height: 15px;
+  margin-top: 4px;
+  min-height: 15px;
+  white-space: nowrap;
+}
+
+.embed-container {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  flex-wrap: wrap;
+  height: 450px;
+  justify-content: center;
+  margin-top: 16px;
+  opacity: 0.8;
+  width: 340px;
+}
+
+.widget-embed-soundcloud.widget-embed-soundcloud-1 {
+  margin-top: 24px;
+}
+
+.widget-embed-soundcloud.widget-embed-youtube {
+  min-height: 395px;
+}
+
+.widget-embed-soundcloud.widget-embed-youtube .embed-container,
+.widget-embed-soundcloud.widget-embed .embed-container {
+  height: 360px;
+  opacity: 0.5;
+}
+
+.widget-embed-soundcloud.widget-embed {
+  margin-top: 24px;
+  min-height: 395px;
+}
+
