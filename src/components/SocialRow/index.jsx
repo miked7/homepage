@@ -1,18 +1,23 @@
-import React from "react";
+import { React, useState } from "react";
 import Social from "../Social";
 import "./SocialRow.css";
+import SocialMediaAccount from "../../user_profile/SocialMediaAccount";
+import { useEffect } from "react/cjs/react.development";
 
 function SocialRow(props) {
-  const { className, socialProps, social2Props } = props;
+  const { userProfile } = props;
+  const [socialMediaAccounts, setSocialMediaAccounts] = useState(Array.from(userProfile.SocialMediaAccounts, ([key, value]) => value));
+
+  useEffect(() => {
+    userProfile.addListener(() => {
+      let smaArray = Array.from(userProfile.SocialMediaAccounts, ([key, value]) => value);
+      setSocialMediaAccounts(smaArray);
+    })
+  }, []);
 
   return (
-    <div className={`social-row ${className || ""}`}>
-      <Social socialHandle={socialProps.socialHandle} brandstwitterProps={socialProps.brandstwitterProps} />
-      <Social
-        socialHandle={social2Props.socialHandle}
-        className={social2Props.className}
-        brandstwitterProps={social2Props.brandstwitterProps}
-      />
+    <div className={`social-row`}>
+      {  Array.from(socialMediaAccounts, ([key, value]) => value).map(sma => <Social socialMediaAccount={sma} />) }
     </div>
   );
 }

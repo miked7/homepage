@@ -54,7 +54,7 @@ const InlineEditor2 = ({ value, setValue, userProfile }) => {
         }}
         className={`inline-text_copy inline-text_copy--${!isInputActive ? userProfile.IsEditable ? "active" : "active--readonly" : "hidden"}`}>
         {value}
-        { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} /> : <div /> }
+        { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} /> : <p hidden/> }
       </span>
       <input
         ref={inputRef}

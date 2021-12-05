@@ -1,4 +1,6 @@
 import { Storage } from '@stacks/storage';
+import axios from 'axios';
+import {parseZoneFile} from 'zone-file'; 
 import { getPerson, getUserData, userSession, authenticate } from '../utils/auth';
 
 const storage = new Storage({ userSession });
@@ -29,3 +31,52 @@ export const uploadFile = (targetFile) => {
         
     });
 }
+
+// Workaround for bug with Stacks public storage
+export const readPublicStorageFile = (userX, filename) => {
+    return new Promise ((resolve1, reject1) =>{
+      var nameLookupURL = "https://stacks-node-api.mainnet.stacks.co/v1/names/" + userX;
+      axios.get(nameLookupURL)
+        .then(result => {
+          const zoneFileJson = parseZoneFile(result.data.zonefile)
+          const zonefile4 = zoneFileJson.uri[0].target
+          axios.get(zonefile4)
+             .then(result => {
+                const jsonBlockstack1 = JSON.stringify(result.data[0].decodedToken.payload.claim.appsMeta)
+                let jsonBlockstack2 = jsonBlockstack1
+                let jsonBlockstack4 = {}
+                if (window.location.origin === 'http://localhost:3000') {
+                   jsonBlockstack2 = jsonBlockstack1.replace("http://localhost:3000","localhost");
+                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
+                   jsonBlockstack4 = jsonBlockstack3.localhost
+                }else{
+                  jsonBlockstack2 = jsonBlockstack1.replace("https://xck.app","xckapp");
+                  const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
+                  jsonBlockstack4 = jsonBlockstack3.xckapp
+                }
+                const {storage} = jsonBlockstack4
+                const getFile = storage + filename;
+                axios.get(getFile)
+                  .then((fileContents) => {
+                    if(fileContents) {
+                      resolve1(fileContents.data)
+                    } else {
+                      reject1()
+                    }
+                  })
+                  .catch(error => {
+                     console.log(error)
+                     reject1()
+                  });
+             })
+           .catch(error => {
+             console.log(error)
+             reject1()
+           });
+        })
+        .catch(error => {
+           console.log(error)
+           reject1()
+        });
+    });
+  }

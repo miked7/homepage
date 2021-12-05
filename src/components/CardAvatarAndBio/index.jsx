@@ -42,7 +42,7 @@ function CardAvatarAndBio(props) {
       <div className="image-container">
         <img className="image-avatar" src={avatarUrl} />
         <input type='file' id='file' ref={avatarFilePicker} style={{display: 'none'}} onChange={avatarFilePickerOnChange} />
-        <img className="edit-icon" src={EditIcon} onClick={avatarFilePickerClick} />
+        { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} onClick={avatarFilePickerClick} /> : <p hidden/> }
       </div>
       <TextBoxBio userProfile={userProfile} />
     </div>

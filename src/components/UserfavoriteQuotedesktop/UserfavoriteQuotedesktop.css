@@ -1,8 +1,8 @@
 .quote {
   align-items: flex-start;
-  display: flex;
+  display: inline-flex;
   height: 61px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   left: 10px;
   min-width: 320px;
   position: absolute;
@@ -15,6 +15,7 @@
   min-height: 61px;
   text-align: center;
   width: 320px;
+  flex-direction: row;
 }
 
 .span1 {

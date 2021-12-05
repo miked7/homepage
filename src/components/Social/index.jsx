@@ -3,13 +3,13 @@ import Brandstwitter from "../Brandstwitter";
 import "./Social.css";
 
 function Social(props) {
-  const { socialHandle, className, brandstwitterProps } = props;
+  const { socialMediaAccount } = props;
 
   return (
-    <div className={`social-2 ${className || ""}`}>
+    <div className={`social-2`}>
       <div className="stacked-group">
-        <Brandstwitter src={brandstwitterProps.src} />
-        <div className="social-handle profile-description">{socialHandle}</div>
+        {/* <Brandstwitter /> */}
+        <div className="social-handle profile-description">{socialMediaAccount.Uid}</div>
       </div>
     </div>
   );

@@ -23,12 +23,7 @@ function CardUserInfo(props) {
       />
       <UserfavoriteQuotedesktop userProfile={userProfile}/>
       <div className="social-stack">
-        <SocialRow socialProps={socialRowProps.socialProps} social2Props={socialRowProps.social2Props} />
-        <SocialRow
-          className={socialRow2Props.className}
-          socialProps={socialRow2Props.socialProps}
-          social2Props={socialRow2Props.social2Props}
-        />
+        <SocialRow userProfile={userProfile} />
       </div>
       <TextGroupCreatorIdDescr userProfile={userProfile}/>
     </div>

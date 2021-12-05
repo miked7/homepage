@@ -15,11 +15,11 @@ function UserfavoriteQuotedesktop(props) {
   return (
     <div className="quote">
       <div className="quote-text bio-quote">
-      <span className="span1">"</span>
-      <InlineEditor2 value={quote} setValue={(qte) => userProfile.Quote = qte} userProfile={userProfile} />
-      <span className="span1">"</span>
-        {/* <span className="span1">{spanText}</span>
-        <span className="span2">{spanText2}</span> */}
+        <span className="span1">"</span>
+        <InlineEditor2 value={quote} setValue={(qte) => userProfile.Quote = qte} userProfile={userProfile} />
+        <span className="span1">"</span>
+          {/* <span className="span1">{spanText}</span>
+          <span className="span2">{spanText2}</span> */}
       </div>
     </div>
   );

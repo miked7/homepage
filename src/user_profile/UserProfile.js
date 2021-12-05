@@ -1,5 +1,6 @@
 import { Storage } from '@stacks/storage';
 import { getPerson, getUserData, userSession, authenticate } from '../utils/auth';
+import { readPublicStorageFile } from '../utils/file';
 import SocialMediaAccount from './SocialMediaAccount';
 import Project from './Project';
 import PortfolioItem from './PortfolioItem';
@@ -116,7 +117,7 @@ class UserProfile {
 
     // SocialMediaAccounts
     get SocialMediaAccounts() {
-        return this.socialMediaAccounts.values;
+        return this.socialMediaAccounts;
     }
     
     addSocialMediaAccount = (provider, uid) => {
@@ -193,13 +194,18 @@ class UserProfile {
             });    
         }
         else {
-            const options = {
-                decrypt: false,
-                verify: false,
-                username: 'michael-thompson.mixmi.app',
-                app: "http://localhost:3000",
-                //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
-            };
+            let userId = 'michael-thompson.mixmi.app';
+
+            // // The below code is not working at the moment due to a bug in the Stacks Storage library.
+            // // For now we will work around using the readUserProfile function.
+            // //
+            // // const options = {
+            // //     decrypt: false,
+            // //     verify: false,
+            // //     username: 'michael-thompson.mixmi.app',
+            // //     app: "http://localhost:3000",
+            // //     //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
+            // // };
 
             // // storage.getFile(USER_PROFILE_FILENAME, options)
             // //     .then(data => {
@@ -231,21 +237,63 @@ class UserProfile {
             // //     .finally(() => {
             // //     });    
 
-            this.name = "Not signed in";
-            this.descrption = "";
-            this.quote = "";
-            this.stxId = "";
-            this.avatarUrl = "";
-            this.title = "";
-            this.biography = "";
+            readPublicStorageFile(userId, USER_PROFILE_FILENAME).then(dataObject => {
+                //let dataObject = JSON.parse(data);
+    
+                this.name = dataObject.Name;
+                this.description = dataObject.Description;
+                this.quote = dataObject.Quote;
+                this.stxId = dataObject.StxId;
+                this.avatarUrl = dataObject.AvatarUrl;
+                this.title = dataObject.Title;
+                this.biography = dataObject.Biography;
+    
+                this.socialMediaAccounts.clear();
+                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts[sma.Provider] = new SocialMediaAccount(sma.Provider, sma.Uid));
+    
+                this.projects.clear();
+                dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
+    
+                this.portfolioItems.clear();
+                dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.WidgetCode));
+    
+                this.listeners.forEach(l => l());
+            }).catch(error => {
+                alert(error);
 
-            this.socialMediaAccounts.clear();
+                this.name = "Not signed in";
+                this.descrption = "";
+                this.quote = "";
+                this.stxId = "";
+                this.avatarUrl = "";
+                this.title = "";
+                this.biography = "";
 
-            this.projects.clear();
+                this.socialMediaAccounts.clear();
 
-            this.portfolioItems.clear();
+                this.projects.clear();
 
-            this.listeners.forEach(l => l());
+                this.portfolioItems.clear();
+
+                this.listeners.forEach(l => l());
+            });
+
+            // Delete me when public storage workaround is working
+            // // this.name = "Not signed in";
+            // // this.descrption = "";
+            // // this.quote = "";
+            // // this.stxId = "";
+            // // this.avatarUrl = "";
+            // // this.title = "";
+            // // this.biography = "";
+
+            // // this.socialMediaAccounts.clear();
+
+            // // this.projects.clear();
+
+            // // this.portfolioItems.clear();
+
+            // // this.listeners.forEach(l => l());
         }        
     }
 
