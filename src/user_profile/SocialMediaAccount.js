@@ -14,6 +14,10 @@ class SocialMediaAccount {
     get Uid() {
         return this.#uid;
     }
+
+    set Uid(value) {
+        this.#uid = value;
+    }
   }
 
   export default SocialMediaAccount;

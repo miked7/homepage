@@ -47,7 +47,7 @@ function HomeDesktopHD(props) {
             />
           </div>
           <div className="projects-box">
-            <div className="title-1 titleleft">{title}</div>
+            <div className="title-1 titleleft">Projects</div>
             <div className="projects-row">
               <CardProject />
               <CardProject className={cardProjectProps.className} />

@@ -17,10 +17,7 @@ function CardUserInfo(props) {
 
   return (
     <div className="card-user-info">
-      <TextGourpSTXWallet
-        stxWalletId={textGourpSTXWalletProps.stxWalletId}
-        sp3P08Qbcvs8K93Mdv8Y={textGourpSTXWalletProps.sp3P08Qbcvs8K93Mdv8Y}
-      />
+      <TextGourpSTXWallet userProfile={userProfile} />
       <UserfavoriteQuotedesktop userProfile={userProfile}/>
       <div className="social-stack">
         <SocialRow userProfile={userProfile} />

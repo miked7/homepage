@@ -1,0 +1,10 @@
+.icon-button-container {
+    width: 16;
+    cursor: pointer;
+}
+
+.icon-button-image {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

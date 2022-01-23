@@ -1,6 +1,7 @@
 .social-2 {
   align-items: center;
   display: flex;
+  margin-left: 18px;
 }
 
 .stacked-group {
@@ -19,5 +20,10 @@
 
 .social-2.social-1 {
   margin-left: 12px;
+}
+
+.icon-style {
+  height: 13px;
+  width: 16px;
 }
 

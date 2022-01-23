@@ -1,0 +1,44 @@
+.button-container-action {
+  align-items: flex-start;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  min-width: 67px;
+  cursor: pointer;
+}
+
+.group-action-enabled {
+  align-items: center;
+  background-color: var(--anakiwa);
+  border-radius: 4px;
+  display: flex;
+  height: 42px;
+  margin-top: -1.0px;
+  min-width: 67px;
+  padding: 0 18.0px;
+  cursor: pointer;
+}
+
+.group-action-disabled {
+  align-items: center;
+  background-color: gray;
+  border-radius: 4px;
+  display: flex;
+  height: 42px;
+  margin-top: -1.0px;
+  min-width: 67px;
+  padding: 0 18.0px;
+  cursor: pointer;
+}
+
+.label-action {
+  color: #131415;
+  font-weight: 700;
+  line-height: 28px;
+  min-height: 28px;
+  min-width: 67px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+

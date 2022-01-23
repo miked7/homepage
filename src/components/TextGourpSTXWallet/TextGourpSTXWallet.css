@@ -1,7 +1,7 @@
 .stacks-wallet {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   left: 0;
   min-height: 44px;
   position: absolute;
@@ -33,3 +33,12 @@
   white-space: nowrap;
 }
 
+.edit-icon-nft-buttons {
+  align-self: center;
+  margin: 12px 12px;
+  cursor: pointer;
+}
+
+.nft-button-container {
+  margin: 20px 12px;
+}

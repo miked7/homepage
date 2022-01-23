@@ -10,3 +10,15 @@
   margin-top: 12px;
 }
 
+.edit-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--diesel);
+  border: 1px solid #ccc;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}

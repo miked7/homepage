@@ -5,8 +5,14 @@
   --polar: #e1f9f6;
   --quill-gray: #d7d4d4;
   --white: #ffffff;
+  --diesel: #160207;
+  --eerie-black: #1c2124;
+  --eerie-black-2: #1c2124d9;
+  --log-cabin: #212121;
+  --sonic-silver: #757575;
  
   --font-size-13px: 13px;
+  --font-size-21px: 21px;
   --font-size-23px: 23px;
   --font-size-32px: 32px;
   --font-size-l: 17px;
@@ -95,4 +101,10 @@
 
 .border-1px-mountain-mist {
   border: 1px solid var(--mountain-mist);
+}
+
+input[type=radio] {
+  border: 0px;
+  width: 100%;
+  height: 1.5em;
 }

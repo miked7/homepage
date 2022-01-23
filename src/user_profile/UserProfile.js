@@ -20,6 +20,8 @@ class UserProfile {
       this.avatarUrl = '';
       this.title = '';
       this.biography = '';
+      this.isNftCollectionButtonAvailable = true;
+      this.isDonateButtonAvailable = true;
       this.socialMediaAccounts = new Map();
       this.projects = new Map();
       this.portfolioItems = new Map();
@@ -115,13 +117,37 @@ class UserProfile {
         }
     }
 
+    get IsNftCollectionButtonAvailable() {
+        return this.isNftCollectionButtonAvailable;
+    }
+
+    set IsNftCollectionButtonAvailable(value) {
+        if (this.isNftCollectionButtonAvailable != value)
+        {
+            this.isNftCollectionButtonAvailable = value;
+            this.listeners.forEach(l => l());
+        }
+    }
+
+    get IsDonateButtonAvailable() {
+        return this.isDonateButtonAvailable;
+    }
+
+    set IsDonateButtonAvailable(value) {
+        if (this.isDonateButtonAvailable != value)
+        {
+            this.isDonateButtonAvailable = value;
+            this.listeners.forEach(l => l());
+        }
+    }
+
     // SocialMediaAccounts
     get SocialMediaAccounts() {
         return this.socialMediaAccounts;
     }
     
     addSocialMediaAccount = (provider, uid) => {
-        this.socialMediaAccounts[provider] = new SocialMediaAccount(provider, uid);
+        this.socialMediaAccounts.set(provider, new SocialMediaAccount(provider, uid));
         this.listeners.forEach(l => l());
     }
 
@@ -136,7 +162,7 @@ class UserProfile {
     }
  
     addProject = (name, imageUrl, siteUrl) => {
-        this.projects[name] = new Project(name, imageUrl, siteUrl);
+        this.projects.set(name, new Project(name, imageUrl, siteUrl));
         this.listeners.forEach(l => l());
     }
 
@@ -151,7 +177,7 @@ class UserProfile {
     }
 
     addPortfolioItem = (title, widgetCode) => {
-        this.portfolioItems[title] = new PortfolioItem(title, widgetCode);
+        this.portfolioItems.set(title, new PortfolioItem(title, widgetCode));
         this.listeners.forEach(l => l());
     }
 
@@ -180,9 +206,11 @@ class UserProfile {
                 this.avatarUrl = dataObject.AvatarUrl;
                 this.title = dataObject.Title;
                 this.biography = dataObject.Biography;
+                this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
+                this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
     
                 this.socialMediaAccounts.clear();
-                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts[sma.Provider] = new SocialMediaAccount(sma.Provider, sma.Uid));
+                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
                 dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
@@ -247,9 +275,11 @@ class UserProfile {
                 this.avatarUrl = dataObject.AvatarUrl;
                 this.title = dataObject.Title;
                 this.biography = dataObject.Biography;
+                this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
+                this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
     
                 this.socialMediaAccounts.clear();
-                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts[sma.Provider] = new SocialMediaAccount(sma.Provider, sma.Uid));
+                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
                 dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
@@ -268,6 +298,8 @@ class UserProfile {
                 this.avatarUrl = "";
                 this.title = "";
                 this.biography = "";
+                this.isNftCollectionButtonAvailable = true;
+                this.isDonateButtonAvailable = true;
 
                 this.socialMediaAccounts.clear();
 
@@ -324,6 +356,8 @@ class UserProfile {
             AvatarUrl : this.avatarUrl,
             Title : this.title,
             Biography : this.biography,
+            IsNftCollectionButtonAvailable : this.isNftCollectionButtonAvailable,
+            IsDonateButtonAvailable: this.isDonateButtonAvailable,
             SocialMediaAccounts : _socialMediaAccounts,
             Projects : _projects,
             PortfolioItems : _portfolioItems
@@ -361,6 +395,8 @@ class UserProfile {
             AvatarUrl : "https://picsum.photos/200",
             Title : "Software Developer",
             Biography : "Some bio stuff...",
+            IsNftCollectionButtonAvailable : true,
+            IsDonateButtonAvailable: true,
             SocialMediaAccounts : _socialMediaAccounts,
             Projects : _projects,
             PortfolioItems : _portfolioItems

@@ -1,0 +1,158 @@
+
+  .box-icon-brand {
+    align-items: center;
+    background-color: var(--eerie-black);
+    display: flex;
+    height: 48px;
+    /* left: 280px; */
+    min-width: 48px;
+    padding: 0 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  .fill-2 {
+    height: 10px;
+    width: 24px;
+  }
+  
+  .box-icon-brand.box-icon-brand-1 {
+    align-items: flex-end;
+    background-color: var(--log-cabin);
+    left: 270px;
+    padding: 18px 12px;
+  }
+
+  .fill-1 {
+    height: 12px;
+    left: 326px;
+    position: absolute;
+    top: 22px;
+    width: 12px;
+  }
+  
+
+
+
+
+
+  .all-stuff {
+    background-color: var(--diesel);
+  }
+
+  .edit-social-rows {
+    background-color: var(--diesel);
+    
+    margin-top: 10px;
+    width: 360px;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .edit-social-row {
+    display: flex;
+    margin: 20px 0px 0px 0px;
+  }
+
+  .social-media-editor-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: 48px;
+  }
+
+  .social-media-editor-item {
+    flex-grow: 10;
+    background-color: var(--white);
+    align-items: center;
+    border-radius: 6px 0px 0px 6px;
+    display: flex;
+  }
+
+  .social-media-editor-icon {
+    background-color: var(--eerie-black);
+    /* flex-grow: 1; */
+    align-items: center;
+    display: flex;
+    padding: 0 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .social-media-icon {
+    /* height: 10px;
+    width: 24px; */
+  }
+
+  input {
+    background-color: transparent;
+    border: 0;
+    padding: 8px;
+    width: 100%;
+    Height: 100%;
+    border-radius: 6px 0px 0px 6px;
+  }
+
+  .title-and-text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  
+  width: 328px;
+}
+
+.social-bar {
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 25px;
+  min-height: 25px;
+  white-space: nowrap;
+}
+
+.paste-links-for-the {
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 17px;
+  margin-top: 7px;
+  min-height: 34px;
+  opacity: 0.85;
+  width: 320px;
+}
+
+.title-font {
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-21px);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.description-font {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.command-button-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0px 0px 0px;
+}
+
+.command-button {
+  margin: 0px 25px;
+}
+
+.close-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
