@@ -36,7 +36,9 @@ function TextGourpSTXWallet(props) {
           onConfirm={(isAvailable) => { userProfile.IsNftCollectionButtonAvailable = isAvailable; setIsNftCollectionButtonEditorOpen(false); }}
           onCancel={() => setIsNftCollectionButtonEditorOpen(false)} />
       </ReactModal>
-      <ActionButton text="SEE MY NFTs" onClick={() => onClickNoOp()} isEnabled={isNftCollectionButtonEnabled} />
+      <div className="nft-button-container">
+        <ActionButton text="SEE MY NFTs" onClick={() => onClickNoOp()} isEnabled={isNftCollectionButtonEnabled} />
+      </div>
       { userProfile.IsEditable ? <img className="edit-icon-nft-buttons" src={EditIcon} onClick={() => setIsDontateButtonEditorOpen(true)} /> : <p hidden/> }
       <ReactModal className="edit-popup" isOpen={isDontateButtonEditorOpen} contentLabel="Social Media">
         <EditNftButton 
@@ -47,7 +49,9 @@ function TextGourpSTXWallet(props) {
           onConfirm={(isAvailable) => { userProfile.IsDonateButtonAvailable = isAvailable; setIsDontateButtonEditorOpen(false); }}
           onCancel={() => setIsDontateButtonEditorOpen(false)} />
       </ReactModal>
-      <ActionButton text="GIMME STX" onClick={() => onClickNoOp()} isEnabled={isDontateButtonEnabled} />
+      <div className="nft-button-container">
+        <ActionButton text="GIMME STX" onClick={() => onClickNoOp()} isEnabled={isDontateButtonEnabled} />
+      </div>
     </div>
   );
 }

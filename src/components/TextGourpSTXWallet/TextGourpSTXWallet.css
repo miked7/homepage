@@ -35,10 +35,14 @@
 
 .edit-icon-nft-buttons {
   align-self: center;
-  margin: 12px 12px;
+  /* margin: 12px 12px; */
   cursor: pointer;
 }
 
 .nft-button-container {
   margin: 20px 12px;
+}
+
+.nft-button {
+  margin: 12px 12px;
 }
