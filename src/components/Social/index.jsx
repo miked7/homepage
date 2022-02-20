@@ -6,6 +6,7 @@ import InstagramIcon from './../../static/img/social-media-icons/Instagram.png';
 import YouTubeIcon from './../../static/img/social-media-icons/YouTube.png';
 import MixCloudIcon from './../../static/img/social-media-icons/Mixcloud.png';
 import TikTokIcon from './../../static/img/social-media-icons/Tiktok.png';
+import SocialMediaAccount from "../../user_profile/SocialMediaAccount";
 import "./Social.css";
 
 function Social(props) {

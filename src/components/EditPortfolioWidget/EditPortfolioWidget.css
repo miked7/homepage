@@ -1,0 +1,71 @@
+.all-stuff {
+    background-color: var(--diesel);
+}
+
+.close-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.title-and-text {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    width: 328px;
+}
+
+.social-bar {
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 25px;
+    min-height: 25px;
+    white-space: nowrap;
+}
+
+.title-font {
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-21px);
+    font-style: normal;
+    font-weight: 700;
+}
+
+.paste-links-for-the {
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 17px;
+    margin-top: 7px;
+    min-height: 34px;
+    opacity: 0.85;
+    width: 320px;
+}
+
+.description-font {
+    color: var(--white);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xs);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.widget-code-editor-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.command-button-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px 0px 0px;
+  }
+
+  .command-button {
+    margin: 0px 25px;
+  }
+  

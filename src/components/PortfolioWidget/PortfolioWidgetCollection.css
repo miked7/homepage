@@ -1,0 +1,21 @@
+.portfolio-widget-collection-container {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.portfolio-widget-collection-items-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.add-portfolio-widget-button {
+    width: auto;
+}
+
+.portfolio-widget {
+    width: auto;
+}

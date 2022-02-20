@@ -1,9 +1,11 @@
 class PortfolioItem {
     #title;
+    #description;
     #widgetCode;
         
-    constructor(title, widgetCode) {
+    constructor(title, description, widgetCode) {
       this.#title = title;
+      this.#description = description;
       this.#widgetCode = widgetCode;
 
       this.listeners = [];
@@ -11,6 +13,26 @@ class PortfolioItem {
 
     get Title() {
         return this.#title;
+    }
+
+    set Title(value) {
+        if (this.#title != value)
+        {
+            this.#title = value;
+            this.listeners.forEach(l => l());
+        }
+    }
+
+    get Description() {
+        return this.#description;
+    }
+
+    set Description(value) {
+        if (this.#description != value)
+        {
+            this.#description = value;
+            this.listeners.forEach(l => l());
+        }
     }
 
     get WidgetCode() {

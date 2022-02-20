@@ -1,0 +1,22 @@
+.add-widget-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+}
+
+.add-widget-button-container:hover {
+    border: 2px solid var(--anakiwa);
+}
+
+.add-widget-button-image {
+    width: 32px;
+    height: 32px;
+    align-self: center;
+    cursor: pointer;
+}

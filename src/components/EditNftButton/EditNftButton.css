@@ -37,7 +37,7 @@
 
 
   .all-stuff {
-    background-color: white;
+    background-color: var(--diesel);
   }
 
   .edit-social-rows {

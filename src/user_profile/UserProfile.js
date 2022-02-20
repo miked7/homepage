@@ -158,7 +158,7 @@ class UserProfile {
 
     // Projects
     get Projects() {
-        return this.projects.values;
+        return this.projects;
     }
  
     addProject = (name, imageUrl, siteUrl) => {
@@ -173,11 +173,11 @@ class UserProfile {
 
     // PortfolioItems
     get PortfolioItems() {
-        return this.portfolioItems.values;
+        return this.portfolioItems;
     }
 
-    addPortfolioItem = (title, widgetCode) => {
-        this.portfolioItems.set(title, new PortfolioItem(title, widgetCode));
+    addPortfolioItem = (title, description, widgetCode) => {
+        this.portfolioItems.set(title, new PortfolioItem(title, description, widgetCode));
         this.listeners.forEach(l => l());
     }
 
@@ -213,10 +213,10 @@ class UserProfile {
                 dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
+                dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.WidgetCode));
+                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Title, new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode)));
     
                 this.listeners.forEach(l => l());
             });    
@@ -255,7 +255,7 @@ class UserProfile {
             // //         dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
         
             // //         this.portfolioItems.clear();
-            // //         dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.WidgetCode));
+            // //         dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode));
         
             // //         this.listeners.forEach(l => l());
             // //     })
@@ -282,10 +282,10 @@ class UserProfile {
                 dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
+                dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.WidgetCode));
+                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Title, new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode)));
     
                 this.listeners.forEach(l => l());
             }).catch(error => {
@@ -344,8 +344,8 @@ class UserProfile {
         ];
     
         const _portfolioItems = [
-            { Title : "blah0", WidgetCode : "<div></div>" },
-            { Title : "blah0", WidgetCode : "<div></div>" }
+            { Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
+            { Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
         ];
     
         userProfile = {
@@ -383,8 +383,8 @@ class UserProfile {
         ];
     
         const _portfolioItems = [
-            { Title : "blah0", WidgetCode : "<div></div>" },
-            { Title : "blah0", WidgetCode : "<div></div>" }
+            { Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
+            { Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
         ];
     
         let userProfile = {

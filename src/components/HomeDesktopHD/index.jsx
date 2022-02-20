@@ -8,6 +8,8 @@ import ButtonBorderGreen from "../ButtonBorderGreen";
 import ButtonFillGreen from "../ButtonFillGreen";
 import "./HomeDesktopHD.css";
 import UserProfile from "../../user_profile/UserProfile";
+import PortfolioWidgetCollection from "../PortfolioWidget/PortfolioWidgetCollection"
+
 
 const userProfile = new UserProfile("michael-thompson");
 
@@ -46,7 +48,8 @@ function HomeDesktopHD(props) {
               textGroupCreatorIdDescrProps={cardUserInfoProps.textGroupCreatorIdDescrProps}
             />
           </div>
-          <div className="projects-box">
+          <PortfolioWidgetCollection userProfile={userProfile} />
+          {/* <div className="projects-box">
             <div className="title-1 titleleft">Projects</div>
             <div className="projects-row">
               <CardProject />
@@ -55,20 +58,20 @@ function HomeDesktopHD(props) {
           </div>
           <div className="widget-columns">
             <div className="widget-title">
-              <div className="title titleleft">{title2}</div>
+              <div className="title titleleft">Widgets Left</div>
               <div className="widget-column">
                 <WidgetMediaEmbedSoundcloud />
                 <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloudProps.className} />
               </div>
             </div>
             <div className="widget-title-1">
-              <div className="title titleleft">{title3}</div>
+              <div className="title titleleft">Widgets Right</div>
               <div className="widget-column">
                 <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloud2Props.className} />
                 <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloud3Props.className} />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="nav-bar">
           <Faviconuser32px src={faviconuser32pxProps.src} />
