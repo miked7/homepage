@@ -19,6 +19,8 @@ const EditPortfolioWidget = ({ portfolioItem, onClose }) => {
       }, []);
 
     const OnConfirmButton = () => {
+        portfolioItem.Title = title;
+        portfolioItem.Description =description;
         portfolioItem.WidgetCode = widgetCode;
         onClose();
     };
@@ -29,11 +31,14 @@ const EditPortfolioWidget = ({ portfolioItem, onClose }) => {
                 <IconButton icon={CloseIcon} onClick={() => onClose()} />
             </div>
             <div className="title-and-text">
-                <div className="social-bar title-font">{title}</div>
-                <p className="paste-links-for-the description-font">{description}</p>
+                <div className="social-bar title-font">Title:</div>
+                <input type="text" className="edit-portfolio-item-input-text" defaultValue={title} onChange={e => setTitle(e.target.value)} />
+                <p className="edit-portfolio-label description-font">Description:</p>
+                <input type="text" className="edit-portfolio-item-input-text" defaultValue={description} onChange={e => setDescription(e.target.value)} />
             </div>
             <div className="widget-code-editor-container">
-                <textarea className="widget-code-editor-textarea" value={widgetCode} />
+                <p className="edit-portfolio-label description-font">Code:</p>
+                <textarea className="widget-code-editor-textarea" defaultValue={widgetCode} onChange={e => setWidgetCode(e.target.value)} />
             </div>
             <div className="command-button-box">
                 <div className="command-button">

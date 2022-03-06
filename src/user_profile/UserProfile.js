@@ -241,7 +241,7 @@ class UserProfile {
             // //         let dataObject = JSON.parse(data);
         
             // //         this.name = dataObject.Name;
-            // //         this.descrption = dataObject.Description;
+            // //         this.description = dataObject.Description;
             // //         this.quote = dataObject.Quote;
             // //         this.stxId = dataObject.StxId;
             // //         this.avatarUrl = dataObject.AvatarUrl;
@@ -292,7 +292,7 @@ class UserProfile {
                 alert(error);
 
                 this.name = "Not signed in";
-                this.descrption = "";
+                this.description = "";
                 this.quote = "";
                 this.stxId = "";
                 this.avatarUrl = "";
@@ -312,7 +312,7 @@ class UserProfile {
 
             // Delete me when public storage workaround is working
             // // this.name = "Not signed in";
-            // // this.descrption = "";
+            // // this.description = "";
             // // this.quote = "";
             // // this.stxId = "";
             // // this.avatarUrl = "";
@@ -333,21 +333,24 @@ class UserProfile {
 
         let userProfile;
 
-        const _socialMediaAccounts = [
-            { Provider : "twitter", Uid : "mike" },
-            { Provider : "instagram", Uid : "mike" },
-        ];
+        var _socialMediaAccounts = [];
+
+        this.SocialMediaAccounts.forEach((value) => {
+            _socialMediaAccounts.push({Provider: value.Provider, Uid: value.Uid});
+        });
         
-        const _projects = [
-            { Name : "blah0", ImageUrl : "https://picsum.photos/200", SiteUrl : "https://www.google.com" },
-            { Name : "blah1", ImageUrl : "https://picsum.photos/200", SiteUrl : "https://www.google.com" }
-        ];
+        var _projects = [];
     
-        const _portfolioItems = [
-            { Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
-            { Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
-        ];
+        this.Projects.forEach((value) => {
+            _projects.push({Name: value.Name, ImageUrl: value.ImageUrl, SiteUrl: value.SiteUrl});
+        });
+
+        var _portfolioItems = []; //Array.from(this.PortfolioItems.values());
     
+        this.PortfolioItems.forEach((value) => {
+            _portfolioItems.push({Title: value.Title, Description: value.Description, WidgetCode: value.WidgetCode});
+        });
+
         userProfile = {
             Name : this.name,
             Description : this.description,
@@ -389,7 +392,7 @@ class UserProfile {
     
         let userProfile = {
             Name : "Michael Thompson",
-            Descrption : "Software Engineer",
+            Description : "Software Engineer",
             Quote : "YOLO",
             StxId : "XXX",
             AvatarUrl : "https://picsum.photos/200",

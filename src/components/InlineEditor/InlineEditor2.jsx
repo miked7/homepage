@@ -58,6 +58,7 @@ const InlineEditor2 = ({ value, setValue, userProfile }) => {
       </span>
       <input
         ref={inputRef}
+        className="input-text"
         // set the width to the input length multiplied by the x height
         // it's not quite right but gets it close
         style={{ width: ( wrapperRef ? wrapperRef.width : 1 ) + "px" }}

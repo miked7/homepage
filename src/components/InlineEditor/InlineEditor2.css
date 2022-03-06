@@ -42,6 +42,8 @@ body {
     outline: none;
     border-bottom: 1px solid #666666;
     text-align: left;
+    border-radius: 2px;
+    margin: 2px;
   }
 
   .inline-text_copy--hidden,

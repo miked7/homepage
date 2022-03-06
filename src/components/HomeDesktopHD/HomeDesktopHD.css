@@ -109,3 +109,9 @@
   height: 30px;
 }
 
+.portfolio-widget-collection {
+  margin-top: 30;
+  position: relative;
+  width: 100%;
+}
+

@@ -1,15 +1,16 @@
 .portfolio-widget-collection-container {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 100%;
 }
 
 .portfolio-widget-collection-items-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: left;
     position: relative;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .add-portfolio-widget-button {

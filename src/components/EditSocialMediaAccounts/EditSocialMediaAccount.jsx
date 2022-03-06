@@ -10,7 +10,7 @@ const EditSocialMediaAccount = ({ icon, uid, onUidChange }) => {
     return (
         <div className="social-media-editor-container">
             <div className="social-media-editor-item">
-                <input type="text" aria-label="Field name" defaultValue={uid} onChange={e => onUidChange(e.target.value)}/>
+                <input type="text" className="input-text" aria-label="Field name" defaultValue={uid} onChange={e => onUidChange(e.target.value)}/>
             </div>
             <div className="social-media-editor-icon">
                 <img className="social-media-icon" src={icon} />

@@ -23,7 +23,7 @@ const PortfolioWidgetCollection = ({ userProfile }) => {
             { portfolioItems.map(pi => <PortfolioWidget className="portfolio-widget" portfolioItem={pi} userProfile={userProfile} />) }
         </div>
         <div className="add-portfolio-widget-button">
-            <AddWidgetButton onClick={() => {}} />
+            <AddWidgetButton onClick={() => {userProfile.addPortfolioItem("empty", "empty", "empty")}} />
         </div>
       </div>);
 }

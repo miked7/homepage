@@ -9,6 +9,7 @@ import ButtonFillGreen from "../ButtonFillGreen";
 import "./HomeDesktopHD.css";
 import UserProfile from "../../user_profile/UserProfile";
 import PortfolioWidgetCollection from "../PortfolioWidget/PortfolioWidgetCollection"
+import ActionButton from "../ActionButton/ActionButton"
 
 
 const userProfile = new UserProfile("michael-thompson");
@@ -48,7 +49,9 @@ function HomeDesktopHD(props) {
               textGroupCreatorIdDescrProps={cardUserInfoProps.textGroupCreatorIdDescrProps}
             />
           </div>
-          <PortfolioWidgetCollection userProfile={userProfile} />
+          <div className="portfolio-widget-collection">
+            <PortfolioWidgetCollection userProfile={userProfile} />
+          </div>
           {/* <div className="projects-box">
             <div className="title-1 titleleft">Projects</div>
             <div className="projects-row">
@@ -76,6 +79,7 @@ function HomeDesktopHD(props) {
         <div className="nav-bar">
           <Faviconuser32px src={faviconuser32pxProps.src} />
           <div className="stacked-group-2">
+            <ActionButton text={"Save"} onClick={() => userProfile.save()} isEnabled={true} />
             <ButtonBorderGreen userProfile={userProfile}/>
             <ButtonFillGreen userProfile={userProfile}/>
           </div>
