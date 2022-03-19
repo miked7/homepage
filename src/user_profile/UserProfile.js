@@ -10,8 +10,12 @@ const USER_PROFILE_FILENAME = "UserProfile.json";
 const storage = new Storage({ userSession });
 
 class UserProfile {
-    constructor(userId) {
-      this.userId = userId;
+    #userId;
+    #domain;
+
+    constructor(userId, domain) {
+      this.#userId = userId;
+      this.#domain = domain;
 
       this.name = '';
       this.description = '';
@@ -177,12 +181,14 @@ class UserProfile {
     }
 
     addPortfolioItem = (title, description, widgetCode) => {
-        this.portfolioItems.set(title, new PortfolioItem(title, description, widgetCode));
+        var id = this.portfolioItems.size;
+        this.portfolioItems.set(id, new PortfolioItem(id, title, description, widgetCode));
         this.listeners.forEach(l => l());
+        return id;
     }
 
-    removePortfolioItem = (title) => {
-        this.portfolioItems.delete(title);
+    removePortfolioItem = (id) => {
+        this.portfolioItems.delete(id);
         this.listeners.forEach(l => l());
     }
 
@@ -216,13 +222,13 @@ class UserProfile {
                 dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Title, new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode)));
+                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
     
                 this.listeners.forEach(l => l());
             });    
         }
         else {
-            let userId = 'michael-thompson.mixmi.app';
+            let fullyQualifiedUserId = `${this.#userId}.${this.#domain}`;
 
             // // The below code is not working at the moment due to a bug in the Stacks Storage library.
             // // For now we will work around using the readUserProfile function.
@@ -230,7 +236,7 @@ class UserProfile {
             // // const options = {
             // //     decrypt: false,
             // //     verify: false,
-            // //     username: 'michael-thompson.mixmi.app',
+            // //     username: fullyQualifiedUserId,
             // //     app: "http://localhost:3000",
             // //     //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
             // // };
@@ -265,7 +271,7 @@ class UserProfile {
             // //     .finally(() => {
             // //     });    
 
-            readPublicStorageFile(userId, USER_PROFILE_FILENAME).then(dataObject => {
+            readPublicStorageFile(fullyQualifiedUserId, USER_PROFILE_FILENAME).then(dataObject => {
                 //let dataObject = JSON.parse(data);
     
                 this.name = dataObject.Name;
@@ -285,7 +291,7 @@ class UserProfile {
                 dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Title, new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode)));
+                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
     
                 this.listeners.forEach(l => l());
             }).catch(error => {
@@ -348,7 +354,7 @@ class UserProfile {
         var _portfolioItems = []; //Array.from(this.PortfolioItems.values());
     
         this.PortfolioItems.forEach((value) => {
-            _portfolioItems.push({Title: value.Title, Description: value.Description, WidgetCode: value.WidgetCode});
+            _portfolioItems.push({Id: value.Id, Title: value.Title, Description: value.Description, WidgetCode: value.WidgetCode});
         });
 
         userProfile = {
@@ -386,8 +392,8 @@ class UserProfile {
         ];
     
         const _portfolioItems = [
-            { Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
-            { Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
+            { Id : "0", Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
+            { Id : "1", Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
         ];
     
         let userProfile = {

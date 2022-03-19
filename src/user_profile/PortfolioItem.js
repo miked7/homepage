@@ -1,14 +1,20 @@
 class PortfolioItem {
+    #id;
     #title;
     #description;
     #widgetCode;
         
-    constructor(title, description, widgetCode) {
+    constructor(id, title, description, widgetCode) {
+      this.#id = id;
       this.#title = title;
       this.#description = description;
       this.#widgetCode = widgetCode;
 
       this.listeners = [];
+    }
+
+    get Id() {
+        return this.#id;
     }
 
     get Title() {

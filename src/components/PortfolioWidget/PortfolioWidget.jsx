@@ -14,7 +14,7 @@ const PortfolioWidget = ({ portfolioItem, userProfile }) => {
       <div className="portfolio-widget-container">
         <div className="portfolio-widget-edit-controls-container">
         { userProfile.IsEditable ? <img className="edit-icon-portfolio-widget" src={EditIcon} onClick={() => setIsPortfolioItemEditorOpen(true)} /> : <p hidden/> }
-        { userProfile.IsEditable ? <img className="delete-icon-portfolio-widget" src={DeleteIcon} onClick={() => userProfile.removePortfolioItem(portfolioItem.Title)} /> : <p hidden/> }
+        { userProfile.IsEditable ? <img className="delete-icon-portfolio-widget" src={DeleteIcon} onClick={() => userProfile.removePortfolioItem(portfolioItem.Id)} /> : <p hidden/> }
         <ReactModal className="edit-popup" isOpen={isPortfolioItemEditorOpen} contentLabel="Portfolio">
             <EditPortfolioWidget 
                 portfolioItem={portfolioItem}

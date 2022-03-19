@@ -7,6 +7,10 @@
   cursor: pointer;
 }
 
+.button-action {
+  cursor: pointer;
+}
+
 .group-action-enabled {
   align-items: center;
   background-color: var(--anakiwa);

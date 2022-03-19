@@ -12,23 +12,10 @@ import PortfolioWidgetCollection from "../PortfolioWidget/PortfolioWidgetCollect
 import ActionButton from "../ActionButton/ActionButton"
 
 
-const userProfile = new UserProfile("michael-thompson");
+const userProfile = new UserProfile("michael-thompson", "mixmi.app");
 
 function HomeDesktopHD(props) {
-  const {
-    title,
-    title2,
-    title3,
-    cardAvatarAndBioProps,
-    cardUserInfoProps,
-    cardProjectProps,
-    widgetMediaEmbedSoundcloudProps,
-    widgetMediaEmbedSoundcloud2Props,
-    widgetMediaEmbedSoundcloud3Props,
-    faviconuser32pxProps,
-    buttonBorderGreenProps,
-    buttonFillGreenProps,
-  } = props;
+  const {} = props;
 
   useEffect(() => {
     userProfile.load();
@@ -42,11 +29,6 @@ function HomeDesktopHD(props) {
             <CardAvatarAndBio userProfile={userProfile}/>
             <CardUserInfo
               userProfile={userProfile}
-              textGourpSTXWalletProps={cardUserInfoProps.textGourpSTXWalletProps}
-              userfavoriteQuotedesktopProps={cardUserInfoProps.userfavoriteQuotedesktopProps}
-              socialRowProps={cardUserInfoProps.socialRowProps}
-              socialRow2Props={cardUserInfoProps.socialRow2Props}
-              textGroupCreatorIdDescrProps={cardUserInfoProps.textGroupCreatorIdDescrProps}
             />
           </div>
           <div className="portfolio-widget-collection">
@@ -77,7 +59,7 @@ function HomeDesktopHD(props) {
           </div> */}
         </div>
         <div className="nav-bar">
-          <Faviconuser32px src={faviconuser32pxProps.src} />
+          <Faviconuser32px src={"https://picsum.photos/48"} />
           <div className="stacked-group-2">
             <ActionButton text={"Save"} onClick={() => userProfile.save()} isEnabled={true} />
             <ButtonBorderGreen userProfile={userProfile}/>
