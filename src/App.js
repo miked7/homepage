@@ -5,16 +5,9 @@ import HomeDesktopHD from "./components/HomeDesktopHD";
 
 function App() {
   return (
-    <Router>
-        <Switch>
-          <Route exact path="/">
-            <HomeDesktopHD />
-          </Route>
-          <Route exact path="/homepage">
-            <HomeDesktopHD />
-          </Route>
-        </Switch>
-    </Router>
+    <div>
+      <HomeDesktopHD />
+    </div>
   );
 }
 

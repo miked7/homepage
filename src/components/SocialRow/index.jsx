@@ -1,9 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import ReactModal from 'react-modal';
 import Social from "../Social";
 import "./SocialRow.css";
 import SocialMediaAccount from "../../user_profile/SocialMediaAccount";
-import { useEffect } from "react/cjs/react.development";
 import EditIcon from './../../static/img/edit-16.png';
 import EditSocialMediaAccounts from '../EditSocialMediaAccounts/EditSocialMediaAccounts';
 
@@ -24,12 +23,11 @@ function SocialRow(props) {
   };
 
   return (
-    <div className={`social-row`}>
-      {  socialMediaAccounts.map(sma => <Social socialMediaAccount={sma} />) }
-      { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} onClick={editOnClick} /> : <p hidden/> }
+    <div className="social-row">
+      { socialMediaAccounts.map((sma, index) => <Social socialMediaAccount={sma} key={index} />) }
+      { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} onClick={() => editOnClick()} /> : <p hidden/> }
       <ReactModal className="edit-popup" isOpen={isEditing} contentLabel="Social Media">
         <EditSocialMediaAccounts userProfile={userProfile} onCancel={() => setIsEditing(false)} />
-        {/* <button onClick={() => setIsEditing(false)}>OK</button> */}
       </ReactModal>
     </div>
   );

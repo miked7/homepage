@@ -29,7 +29,7 @@ const PortfolioWidgetCollection = ({ userProfile }) => {
   return (
       <div className="portfolio-widget-collection-container">
         <div className="portfolio-widget-collection-items-container">
-            { portfolioItems.map(pi => <PortfolioWidget className="portfolio-widget" portfolioItem={pi} userProfile={userProfile} />) }
+            { portfolioItems.map((pi, index) => <PortfolioWidget className="portfolio-widget" portfolioItem={pi} userProfile={userProfile} key={index} />) }
         </div>
         <div className="add-portfolio-widget-button">
             { userProfile.IsEditable ? <AddWidgetButton onClick={() => {onAddNewPortfolioItem();}} /> : <p hidden/> }

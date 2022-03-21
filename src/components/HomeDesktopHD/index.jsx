@@ -27,36 +27,11 @@ function HomeDesktopHD(props) {
         <div className="all-content">
           <div className="user-info-cards-horizontal">
             <CardAvatarAndBio userProfile={userProfile}/>
-            <CardUserInfo
-              userProfile={userProfile}
-            />
+            <CardUserInfo userProfile={userProfile} />
           </div>
           <div className="portfolio-widget-collection">
             <PortfolioWidgetCollection userProfile={userProfile} />
           </div>
-          {/* <div className="projects-box">
-            <div className="title-1 titleleft">Projects</div>
-            <div className="projects-row">
-              <CardProject />
-              <CardProject className={cardProjectProps.className} />
-            </div>
-          </div>
-          <div className="widget-columns">
-            <div className="widget-title">
-              <div className="title titleleft">Widgets Left</div>
-              <div className="widget-column">
-                <WidgetMediaEmbedSoundcloud />
-                <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloudProps.className} />
-              </div>
-            </div>
-            <div className="widget-title-1">
-              <div className="title titleleft">Widgets Right</div>
-              <div className="widget-column">
-                <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloud2Props.className} />
-                <WidgetMediaEmbedSoundcloud className={widgetMediaEmbedSoundcloud3Props.className} />
-              </div>
-            </div>
-          </div> */}
         </div>
         <div className="nav-bar">
           <Faviconuser32px src={"https://picsum.photos/48"} />

@@ -8,11 +8,6 @@ import "./CardUserInfo.css";
 function CardUserInfo(props) {
   const {
     userProfile,
-    textGourpSTXWalletProps,
-    userfavoriteQuotedesktopProps,
-    socialRowProps,
-    socialRow2Props,
-    textGroupCreatorIdDescrProps,
   } = props;
 
   return (
