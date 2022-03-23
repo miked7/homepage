@@ -46,13 +46,16 @@ export const readPublicStorageFile = (userX, filename) => {
                 let jsonBlockstack2 = jsonBlockstack1
                 let jsonBlockstack4 = {}
                 if (window.location.origin === 'http://localhost:3000') {
-                   jsonBlockstack2 = jsonBlockstack1.replace("http://localhost:3000","localhost");
+                   const reg = /http:\/\/localhost.3000/
+                   jsonBlockstack2 = jsonBlockstack1.replace(reg,"localhost");
+                   ////jsonBlockstack2 = jsonBlockstack1.replace("http://localhost:3000","localhost");
                    const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
                    jsonBlockstack4 = jsonBlockstack3.localhost
                 }else{
                   // AWS hosting URL is something like https://master.d2l0tpetdicwn0.amplifyapp.com.  Replace that with app name.
                   console.log(jsonBlockstack1);
-                  jsonBlockstack2 = jsonBlockstack1.replace("/.*amplifyapp\.com/","mixmi");
+                  const reg = /http:\/\/master.*amplifyapp\.com/
+                  jsonBlockstack2 = jsonBlockstack1.replace(reg,"mixmi");
                   console.log(jsonBlockstack2);
                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
                   jsonBlockstack4 = jsonBlockstack3.mixmi
