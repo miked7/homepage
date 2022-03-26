@@ -52,9 +52,9 @@ export const readPublicStorageFile = (userX, filename) => {
                    const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
                    jsonBlockstack4 = jsonBlockstack3.localhost
                 }else{
-                  // AWS hosting URL is something like https://master.d2l0tpetdicwn0.amplifyapp.com.  Replace that with app name.
+                  // AWS hosting URL is something like https://<user-name>.mixmi-dev.net.  Replace that with app name.
                   console.log(jsonBlockstack1);
-                  const reg = /https:\/\/master.*amplifyapp\.com/
+                  const reg = /https:\/\/.*\.mixmi-dev\.net/
                   jsonBlockstack2 = jsonBlockstack1.replace(reg,"mixmi");
                   console.log(jsonBlockstack2);
                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
