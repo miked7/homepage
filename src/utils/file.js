@@ -27,6 +27,24 @@ export const uploadFile = (targetFile) => {
                 reject(error);
             };
             reader.readAsArrayBuffer(targetFile);
+        })
+        .catch(error => {
+          console.log(error);
+          var reader = new FileReader();
+          reader.onload = (event) => {
+          var dataArrayBuffer = event.target.result;
+          storage.putFile(targetFile.name, dataArrayBuffer, options)
+              .then((url) => {
+                  resolve(url);
+              })
+              .catch(err => {
+                  reject(err);
+              });
+          };
+          reader.onerror = (error) => {
+              reject(error);
+          };
+          reader.readAsArrayBuffer(targetFile);
         });
         
     });
