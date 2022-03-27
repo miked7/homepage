@@ -46,21 +46,22 @@ export const readPublicStorageFile = (userX, filename) => {
                 let jsonBlockstack2 = jsonBlockstack1
                 let jsonBlockstack4 = {}
                 if (window.location.origin === 'http://localhost:3000') {
-                   const reg = /http:\/\/localhost.3000/
+                   const reg = /http:\/\/localhost:3000/;
                    jsonBlockstack2 = jsonBlockstack1.replace(reg,"localhost");
                    ////jsonBlockstack2 = jsonBlockstack1.replace("http://localhost:3000","localhost");
-                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
-                   jsonBlockstack4 = jsonBlockstack3.localhost
+                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2);
+                   jsonBlockstack4 = jsonBlockstack3.localhost;
                 }else{
                   // AWS hosting URL is something like https://<user-name>.mixmi-dev.net.  Replace that with app name.
                   console.log(jsonBlockstack1);
-                  const reg = /https:\/\/[^"]*\.mixmi-dev\.net/
+                  const reg = new RegExp("https:\/\/[^\"]*\.mixmi-dev\.net");
+                  //const reg = /https:\/\/[^"]*\.mixmi-dev\.net/;
                   jsonBlockstack2 = jsonBlockstack1.replace(reg,"mixmi");
                   console.log(jsonBlockstack2);
-                  const jsonBlockstack3 = JSON.parse(jsonBlockstack2)
-                  jsonBlockstack4 = jsonBlockstack3.mixmi
+                  const jsonBlockstack3 = JSON.parse(jsonBlockstack2);
+                  jsonBlockstack4 = jsonBlockstack3.mixmi;
                 }
-                const {storage} = jsonBlockstack4
+                const {storage} = jsonBlockstack4;
                 const getFile = storage + filename;
                 axios.get(getFile)
                   .then((fileContents) => {
