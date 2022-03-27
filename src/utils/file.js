@@ -72,7 +72,7 @@ export const readPublicStorageFile = (userX, filename) => {
                 }else{
                   // AWS hosting URL is something like https://<user-name>.mixmi-dev.net.  Replace that with app name.
                   console.log(jsonBlockstack1);
-                  const reg = new RegExp("https:\/\/[^\"]*\.mixmi-dev\.net");
+                  const reg = new RegExp(`https://[^"]*.mixmi-dev.net`);
                   //const reg = /https:\/\/[^"]*\.mixmi-dev\.net/;
                   jsonBlockstack2 = jsonBlockstack1.replace(reg,"mixmi");
                   console.log(jsonBlockstack2);
