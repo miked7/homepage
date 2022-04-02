@@ -7,12 +7,11 @@ import Faviconuser32px from "../Faviconuser32px";
 import ButtonBorderGreen from "../ButtonBorderGreen";
 import ButtonFillGreen from "../ButtonFillGreen";
 import "./HomeDesktopHD.css";
-import UserProfile from "../../user_profile/UserProfile";
 import PortfolioWidgetCollection from "../PortfolioWidget/PortfolioWidgetCollection"
 import ActionButton from "../ActionButton/ActionButton"
+import { createUserProfile } from "../../user_profile/UserProfileFactory";
 
-
-const userProfile = new UserProfile("michael-thompson", "mixmi.app");
+const userProfile = createUserProfile();
 
 function HomeDesktopHD(props) {
   const {} = props;

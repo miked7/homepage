@@ -193,6 +193,7 @@ class UserProfile {
     }
 
     load = () => {
+        console.log(`Loading user profile for userId [${this.#userId}] at domain [${this.#domain}].`);
         if (userSession.isUserSignedIn()) {
             let conf = userSession;
             let data = getUserData();

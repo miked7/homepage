@@ -60,27 +60,9 @@ export const readPublicStorageFile = (userX, filename) => {
           const zonefile4 = zoneFileJson.uri[0].target
           axios.get(zonefile4)
              .then(result => {
-                const jsonBlockstack1 = JSON.stringify(result.data[0].decodedToken.payload.claim.appsMeta)
-                let jsonBlockstack2 = jsonBlockstack1
-                let jsonBlockstack4 = {}
-                if (window.location.origin === 'http://localhost:3000') {
-                   const reg = /http:\/\/localhost:3000/;
-                   jsonBlockstack2 = jsonBlockstack1.replace(reg,"localhost");
-                   ////jsonBlockstack2 = jsonBlockstack1.replace("http://localhost:3000","localhost");
-                   const jsonBlockstack3 = JSON.parse(jsonBlockstack2);
-                   jsonBlockstack4 = jsonBlockstack3.localhost;
-                }else{
-                  // AWS hosting URL is something like https://<user-name>.mixmi-dev.net.  Replace that with app name.
-                  console.log(jsonBlockstack1);
-                  const reg = new RegExp(`https://[^"]*.mixmi-dev.net`);
-                  //const reg = /https:\/\/[^"]*\.mixmi-dev\.net/;
-                  jsonBlockstack2 = jsonBlockstack1.replace(reg,"mixmi");
-                  console.log(jsonBlockstack2);
-                  const jsonBlockstack3 = JSON.parse(jsonBlockstack2);
-                  jsonBlockstack4 = jsonBlockstack3.mixmi;
-                }
-                const {storage} = jsonBlockstack4;
-                const getFile = storage + filename;
+                const zoneFileString = JSON.stringify(result.data[0].decodedToken.payload.claim.appsMeta)
+                const storageUrl = getAppStorageFromZoneFile(window.location.origin, zoneFileString);
+                const getFile = storageUrl + filename;
                 axios.get(getFile)
                   .then((fileContents) => {
                     if(fileContents) {
@@ -104,4 +86,15 @@ export const readPublicStorageFile = (userX, filename) => {
            reject1()
         });
     });
+  }
+
+  export const getAppStorageFromZoneFile = (appUrl, zoneFileString) => {
+    console.log(appUrl);
+    console.log(zoneFileString);
+    const replacedZoneFileString = zoneFileString.replace(appUrl,"thisApp");
+    console.log(replacedZoneFileString);
+    const replacedZoneFileObject = JSON.parse(replacedZoneFileString);
+    const appSectionOfZoneFile = replacedZoneFileObject.thisApp;
+    const { storage } = appSectionOfZoneFile;
+    return storage;
   }
