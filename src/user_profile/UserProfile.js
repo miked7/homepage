@@ -194,6 +194,8 @@ class UserProfile {
 
     load = () => {
         console.log(`Loading user profile for userId [${this.#userId}] at domain [${this.#domain}].`);
+        let fullyQualifiedUserId = `${this.#userId}.${this.#domain}`;
+
         if (userSession.isUserSignedIn()) {
             let conf = userSession;
             let data = getUserData();
@@ -226,11 +228,27 @@ class UserProfile {
                 dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
     
                 this.listeners.forEach(l => l());
-            });    
+            }).catch(error => {
+                this.name = fullyQualifiedUserId;
+                this.description = "";
+                this.quote = "";
+                this.stxId = "";
+                this.avatarUrl = "";
+                this.title = "";
+                this.biography = "";
+                this.isNftCollectionButtonAvailable = true;
+                this.isDonateButtonAvailable = true;
+
+                this.socialMediaAccounts.clear();
+
+                this.projects.clear();
+
+                this.portfolioItems.clear();
+
+                this.listeners.forEach(l => l());
+            });
         }
         else {
-            let fullyQualifiedUserId = `${this.#userId}.${this.#domain}`;
-
             // // The below code is not working at the moment due to a bug in the Stacks Storage library.
             // // For now we will work around using the readUserProfile function.
             // //
@@ -296,9 +314,7 @@ class UserProfile {
     
                 this.listeners.forEach(l => l());
             }).catch(error => {
-                alert(error);
-
-                this.name = "Not signed in";
+                this.name = fullyQualifiedUserId;
                 this.description = "";
                 this.quote = "";
                 this.stxId = "";
