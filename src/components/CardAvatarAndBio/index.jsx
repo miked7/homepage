@@ -11,7 +11,7 @@ function CardAvatarAndBio(props) {
 
   useEffect(() => {
     userProfile.addListener(() => {
-      setAvatarUrl(userProfile.AvatarUrl);
+      setAvatarUrl(userProfile.AvatarUrl !== "" ? userProfile.AvatarUrl : "https://picsum.photos/300");
     })
   }, []);
   // TODO - Remove this, set explicitly on user edit action.  

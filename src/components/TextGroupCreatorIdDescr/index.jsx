@@ -18,10 +18,10 @@ function TextGroupCreatorIdDescr(props) {
     <div className="creator-id-description">
       <div className="creator-id-stack">
         <div className="title-2 artist-namedesktop">
-          <InlineEditor2 value={name} setValue={(nm) => userProfile.Name = nm} userProfile={userProfile} />
+          <InlineEditor2 value={name} defaultValue="click to edit name" setValue={(nm) => userProfile.Name = nm} userProfile={userProfile} />
         </div>
         <div className="creator-description">
-          <InlineEditor2 value={description} setValue={(ds) => userProfile.Description = ds} userProfile={userProfile} />
+          <InlineEditor2 value={description} defaultValue="click to edit title" setValue={(ds) => userProfile.Description = ds} userProfile={userProfile} />
         </div>
         {/* <h1 className="title-2 artist-namedesktop">{title}</h1> */}
         {/* <div className="creator-description">{creatorDescription}</div> */}

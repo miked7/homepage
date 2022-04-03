@@ -5,7 +5,7 @@ import "./InlineEditor2.css";
 import EditIcon from './../../static/img/edit-16.png';
 import EditableStateIndicator from '../EditableStateIndicator/EditableStateIndicator';
 
-const InlineEditor2 = ({ value, setValue, userProfile }) => {
+const InlineEditor2 = ({ value, defaultValue, setValue, userProfile }) => {
   const [isInputActive, setIsInputActive] = useState(false);
   const [inputValue, setInputValue] = useState(value);
   const wrapperRef = useRef(null);
@@ -53,7 +53,7 @@ const InlineEditor2 = ({ value, setValue, userProfile }) => {
             }
         }}
         className={`inline-text_copy inline-text_copy--${!isInputActive ? userProfile.IsEditable ? "active" : "active--readonly" : "hidden"}`}>
-        {value}
+        { (value === "") && userProfile.IsEditable ? defaultValue : value }
         { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} /> : <p hidden/> }
       </span>
       <input

@@ -25,7 +25,7 @@ function SocialRow(props) {
   return (
     <div className="social-row">
       { socialMediaAccounts.map((sma, index) => <Social socialMediaAccount={sma} key={index} />) }
-      { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} onClick={() => editOnClick()} /> : <p hidden/> }
+      { userProfile.IsEditable ? <div onClick={() => editOnClick()}> { socialMediaAccounts.length == 0 ? <span>click to edit social media accounts</span> : <p hidden/> } <img className="edit-icon" src={EditIcon} /></div> : <p hidden/> }
       <ReactModal className="edit-popup" isOpen={isEditing} contentLabel="Social Media">
         <EditSocialMediaAccounts userProfile={userProfile} onCancel={() => setIsEditing(false)} />
       </ReactModal>

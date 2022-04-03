@@ -14,7 +14,7 @@ function TextBoxBio(props) {
 
   return (
     <div className="text-box-bio">
-      <InlineEditor2 value={biography} setValue={(bio) => userProfile.Biography = bio} userProfile={userProfile} />
+      <InlineEditor2 value={biography} defaultValue="click to edit bio" setValue={(bio) => userProfile.Biography = bio} userProfile={userProfile} />
     </div>
   );
 }

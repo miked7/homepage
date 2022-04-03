@@ -332,23 +332,6 @@ class UserProfile {
 
                 this.listeners.forEach(l => l());
             });
-
-            // Delete me when public storage workaround is working
-            // // this.name = "Not signed in";
-            // // this.description = "";
-            // // this.quote = "";
-            // // this.stxId = "";
-            // // this.avatarUrl = "";
-            // // this.title = "";
-            // // this.biography = "";
-
-            // // this.socialMediaAccounts.clear();
-
-            // // this.projects.clear();
-
-            // // this.portfolioItems.clear();
-
-            // // this.listeners.forEach(l => l());
         }        
     }
 
@@ -398,44 +381,19 @@ class UserProfile {
 
     setDefault = () => {
 
-        const _socialMediaAccounts = [
-            { Provider : "twitter", Uid : "mike" },
-            { Provider : "instagram", Uid : "mike" },
-        ];
-        
-        const _projects = [
-            { Name : "blah0", ImageUrl : "https://picsum.photos/200", SiteUrl : "https://www.google.com" },
-            { Name : "blah1", ImageUrl : "https://picsum.photos/200", SiteUrl : "https://www.google.com" }
-        ];
-    
-        const _portfolioItems = [
-            { Id : "0", Title : "blah0", Description : "blah blah 0", WidgetCode : "<div>Test</div>" },
-            { Id : "1", Title : "blah1", Description : "blah blah 1", WidgetCode : "<div>Test</div>" }
-        ];
-    
-        let userProfile = {
-            Name : "Michael Thompson",
-            Description : "Software Engineer",
-            Quote : "YOLO",
-            StxId : "XXX",
-            AvatarUrl : "https://picsum.photos/200",
-            Title : "Software Developer",
-            Biography : "Some bio stuff...",
-            IsNftCollectionButtonAvailable : true,
-            IsDonateButtonAvailable: true,
-            SocialMediaAccounts : _socialMediaAccounts,
-            Projects : _projects,
-            PortfolioItems : _portfolioItems
-        }
-        
-        const options = {
+        if (userSession.isUserSignedIn()) {
+            const options = {
             encrypt: false,
         };
 
-        storage.putFile(USER_PROFILE_FILENAME, JSON.stringify(userProfile), options)
+        return storage.deleteFile(USER_PROFILE_FILENAME, options)
             .then(url => {
-                this.load();
+                alert("User profile deleted.")
+            })
+            .catch(error => {
+                alert("Failed to delete user profile.")
             });
+        }
     }
 
     addListener = (listener) => {
