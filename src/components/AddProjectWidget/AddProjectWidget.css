@@ -1,0 +1,141 @@
+.project-all-stuff {
+    background-color: var(--diesel);
+}
+
+.close-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.project-fields-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    width: 328px;
+}
+
+.social-bar {
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 25px;
+    min-height: 25px;
+    white-space: nowrap;
+}
+
+.title-font {
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-21px);
+    font-style: normal;
+    font-weight: 700;
+}
+
+.edit-project-label {
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 17px;
+    opacity: 0.85;
+    width: 320px;
+    margin-top: 10px;
+}
+
+.field-title-font {
+    color: var(--white);
+    font-family: var(--font-family-inter);
+    font-size: var(--font-size-xs);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.command-button-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px 0px 0px;
+  }
+
+  .command-button {
+    margin: 0px 25px;
+  }
+
+  .add-project-input-text {
+    font-family: var(--font-family-inter);
+      width: 100%;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
+    text-align: left;
+    border-radius: 2px;
+    margin: 7px 0px;
+    min-height: 23px;
+  }
+
+  .add-project-input-text:hover {
+    background-color: #d3d3d3;
+    cursor: pointer;
+    color: black
+  }
+
+  .add-project-input-text-disabled {
+    font-family: var(--font-family-inter);
+    opacity: 50%;
+    width: 100%;
+    color: inherit;
+    text-align: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #666666;
+    text-align: left;
+    border-radius: 2px;
+    margin: 7px 0px;
+    min-height: 23px;
+    pointer-events: none;
+  }
+
+  .radio-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-items: center;
+  }
+
+  .choice-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+
+  .editor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    align-items:flex-start
+  }
+
+  .add-project-editor-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .add-project-radio-container {
+      margin-right: 10px;
+  }

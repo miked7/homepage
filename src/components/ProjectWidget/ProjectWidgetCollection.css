@@ -1,0 +1,36 @@
+.project-widget-collection-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.project-widget-collection-title {
+    color: var(--white);
+    font-size: large;
+    font-weight: 700;
+    line-height: 28px;
+    font-family: var(--font-family-sfprotext-bold);
+    font-size: var(--font-size-23px);
+    letter-spacing: 0.28px;
+    font-weight: 700;
+    font-style: normal;
+    align-self: center;
+}
+
+.project-widget-collection-items-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+
+.add-project-widget-button {
+    width: auto;
+}
+
+.project-widget {
+    width: auto;
+}

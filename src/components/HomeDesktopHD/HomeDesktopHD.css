@@ -1,18 +1,29 @@
 .homedesktophd {
+  display: flex;
+  flex-direction: column;
   background-color: var(--eerie-black);
   height: 2094px;
   position: relative;
   width: 1440px;
 }
 
+.nav-bar {
+  background-color: var(--eerie-black);
+  box-shadow: 0px 1px 4px #b4faf140;
+  display: flex;
+  height: 64px;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .all-content {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  left: 245px;
-  position: absolute;
-  top: 140px;
+  align-items: center;
   width: 858px;
+  justify-content: center;
+  align-self: center;
+  margin-top: 100px;
 }
 
 .user-info-cards-horizontal {
@@ -20,42 +31,19 @@
   display: flex;
   height: 425px;
   position: relative;
+  align-self: center;
 }
 
-.projects-box {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 80px;
-  width: 652px;
-}
-
-.title-1 {
-  color: var(--white);
-  font-weight: 700;
-  line-height: 28px;
-  white-space: nowrap;
-}
-
-.projects-row {
-  display: flex;
-  height: 120px;
-  margin-top: 24px;
+.project-widget-collection {
+  margin-top: 60px;
   position: relative;
+  width: 100%;
 }
 
-.widget-columns {
-  align-items: flex-start;
-  display: flex;
-  height: 1046px;
-  margin-top: 80px;
-}
-
-.widget-title {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 340px;
+.portfolio-widget-collection {
+  margin-top: 60px;
+  position: relative;
+  width: 100%;
 }
 
 .title {
@@ -64,35 +52,6 @@
   line-height: 28px;
   white-space: nowrap;
   width: 340px;
-}
-
-.widget-column {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 24px;
-  position: relative;
-  width: 340px;
-}
-
-.widget-title-1 {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-left: 178px;
-  width: 340px;
-}
-
-.nav-bar {
-  background-color: var(--eerie-black);
-  box-shadow: 0px 1px 4px #b4faf140;
-  display: flex;
-  height: 64px;
-  justify-content: space-between;
-  left: 1;
-  position: fixed;
-  top: 0;
-  width: 1440px;
 }
 
 .stacked-group-2 {
@@ -104,14 +63,4 @@
   width: 432px;
 }
 
-.add-widget-button {
-  width: 100%;
-  height: 30px;
-}
-
-.portfolio-widget-collection {
-  margin-top: 30;
-  position: relative;
-  width: 100%;
-}
 

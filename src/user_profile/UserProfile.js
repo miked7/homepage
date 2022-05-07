@@ -165,13 +165,14 @@ class UserProfile {
         return this.projects;
     }
  
-    addProject = (name, imageUrl, siteUrl) => {
-        this.projects.set(name, new Project(name, imageUrl, siteUrl));
+    addProject = (name, description, imageUrl, siteUrl) => {
+        var id = this.projects.size;
+        this.projects.set(id, new Project(id, name, description, imageUrl, siteUrl));
         this.listeners.forEach(l => l());
     }
 
-    removeProject = (name) => {
-        this.projects.delete(name);
+    removeProject = (id) => {
+        this.projects.delete(id);
         this.listeners.forEach(l => l());
     }
 
@@ -222,7 +223,7 @@ class UserProfile {
                 dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
+                dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
                 dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
@@ -307,7 +308,7 @@ class UserProfile {
                 dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
     
                 this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects.set(p.Name, new Project(p.Name, p.ImageUrl, p.SiteUrl)));
+                dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
     
                 this.portfolioItems.clear();
                 dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
@@ -348,7 +349,7 @@ class UserProfile {
         var _projects = [];
     
         this.Projects.forEach((value) => {
-            _projects.push({Name: value.Name, ImageUrl: value.ImageUrl, SiteUrl: value.SiteUrl});
+            _projects.push({Id: value.Id, Name: value.Name, Description: value.Description, ImageUrl: value.ImageUrl, SiteUrl: value.SiteUrl});
         });
 
         var _portfolioItems = []; //Array.from(this.PortfolioItems.values());
