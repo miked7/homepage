@@ -1,0 +1,26 @@
+name: ec2_depl
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout the files
+    - name: Build React App
+      run: CI=false && npm install && npm run build
+    - name: Deploy to Server 1
+      uses: easingthemes/ssh-deploy@main
+      env:
+         SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
+         REMOTE_HOST: ${ { secrets.HOST_DNS }}
+         REMOTE_USER: ${ { secrets.USERNAME }}
+         SOURCE: "./build/"
+         TARGET: ${ { secrets.TARGET_DIR }}
+         ARGS: "-rltgoDzvO --delete"
