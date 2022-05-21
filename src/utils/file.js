@@ -91,7 +91,7 @@ export const readPublicStorageFile = (userX, filename) => {
   export const getAppStorageFromZoneFile = (appUrl, zoneFileString) => {
     console.log(appUrl);
     console.log(zoneFileString);
-    const replacedZoneFileString = zoneFileString.replace(appUrl,"thisApp");
+    const replacedZoneFileString = zoneFileString.replace(`"${appUrl}"`,`"thisApp"`);
     console.log(replacedZoneFileString);
     const replacedZoneFileObject = JSON.parse(replacedZoneFileString);
     const appSectionOfZoneFile = replacedZoneFileObject.thisApp;
