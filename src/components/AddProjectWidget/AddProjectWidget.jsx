@@ -25,9 +25,19 @@ const AddProjectWidget = ({ userProfile, onClose }) => {
 
     const OnConfirmButton = () => {
         if (isHomepageTargetProject) {
-            userProfile.addProject(homepageName, homepageName, "https://picsum.photos/128", `https://${homepageName}.${APP_DOMAIN}`);
+            var name = "";
+            var url = "";
+            if (homepageName.includes(APP_DOMAIN)) {
+                name = homepageName;
+                url = `https://${homepageName}`;
+            }
+            else {
+                name = `${homepageName}.${APP_DOMAIN}`;
+                url = `https://${homepageName}.${APP_DOMAIN}`;
+            }
+            userProfile.addProject(name, name, "https://picsum.photos/128", url);
         } else {
-            userProfile.addProject(otherUrl, "", "https://picsum.photos/128", otherUrl);
+            userProfile.addProject(otherUrl, otherUrl, "https://picsum.photos/128", otherUrl);
         }
         
         onClose();
