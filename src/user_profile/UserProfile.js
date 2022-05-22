@@ -4,6 +4,7 @@ import { readPublicStorageFile } from '../utils/file';
 import SocialMediaAccount from './SocialMediaAccount';
 import Project from './Project';
 import PortfolioItem from './PortfolioItem';
+import { getBnsNamesForAddress } from '../utils/names'
 
 const USER_PROFILE_FILENAME = "UserProfile.json";
 
@@ -29,12 +30,9 @@ class UserProfile {
       this.socialMediaAccounts = new Map();
       this.projects = new Map();
       this.portfolioItems = new Map();
+      this.isEditable = false;
 
       this.listeners = [];
-    }
-
-    get IsEditable() {
-        return userSession.isUserSignedIn();
     }
 
     // Name
@@ -193,147 +191,43 @@ class UserProfile {
         this.listeners.forEach(l => l());
     }
 
+    get IsEditable() {
+        return userSession.isUserSignedIn();
+    }
+
+    set IsEditable(value) {
+        if (this.isEditable != value) {
+            this.isEditable = value;
+            this.listeners.forEach(l => l());
+        }
+    }
+
     load = () => {
         console.log(`Loading user profile for userId [${this.#userId}] at domain [${this.#domain}].`);
         let fullyQualifiedUserId = `${this.#userId}.${this.#domain}`;
 
         if (userSession.isUserSignedIn()) {
-            let conf = userSession;
-            let data = getUserData();
-
-            const options = {
-                decrypt: false,
-            };
-
-            storage.getFile(USER_PROFILE_FILENAME, options).then(data => {
-
-                let dataObject = JSON.parse(data);
-    
-                this.name = dataObject.Name;
-                this.description = dataObject.Description;
-                this.quote = dataObject.Quote;
-                this.stxId = dataObject.StxId;
-                this.avatarUrl = dataObject.AvatarUrl;
-                this.title = dataObject.Title;
-                this.biography = dataObject.Biography;
-                this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
-                this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
-    
-                this.socialMediaAccounts.clear();
-                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
-    
-                this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
-    
-                this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
-    
-                this.listeners.forEach(l => l());
-            }).catch(error => {
-                this.name = fullyQualifiedUserId;
-                this.description = "";
-                this.quote = "";
-                this.stxId = "";
-                this.avatarUrl = "";
-                this.title = "";
-                this.biography = "";
-                this.isNftCollectionButtonAvailable = true;
-                this.isDonateButtonAvailable = true;
-
-                this.socialMediaAccounts.clear();
-
-                this.projects.clear();
-
-                this.portfolioItems.clear();
-
-                this.listeners.forEach(l => l());
-            });
+            let stxUserData = getUserData();
+            getBnsNamesForAddress(stxUserData.profile.stxAddress.mainnet)
+                .then(bnsNames => {
+                    if (bnsNames.includes(fullyQualifiedUserId)) {
+                        this.#loadPrivateProfile(fullyQualifiedUserId);
+                        this.IsEditable = true;
+                    }
+                    else {
+                        this.#loadPublicProfile(fullyQualifiedUserId);
+                        this.IsEditable = false;
+                    }
+                })
+                .catch(err =>  {
+                    console.log(err);
+                    this.IsEditable = false;
+                });
         }
         else {
-            // // The below code is not working at the moment due to a bug in the Stacks Storage library.
-            // // For now we will work around using the readUserProfile function.
-            // //
-            // // const options = {
-            // //     decrypt: false,
-            // //     verify: false,
-            // //     username: fullyQualifiedUserId,
-            // //     app: "http://localhost:3000",
-            // //     //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
-            // // };
-
-            // // storage.getFile(USER_PROFILE_FILENAME, options)
-            // //     .then(data => {
-
-            // //         let dataObject = JSON.parse(data);
-        
-            // //         this.name = dataObject.Name;
-            // //         this.description = dataObject.Description;
-            // //         this.quote = dataObject.Quote;
-            // //         this.stxId = dataObject.StxId;
-            // //         this.avatarUrl = dataObject.AvatarUrl;
-            // //         this.title = dataObject.Title;
-            // //         this.biography = dataObject.Biography;
-        
-            // //         this.socialMediaAccounts.clear();
-            // //         dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts[sma.Provider] = new SocialMediaAccount(sma.Provider, sma.Uid));
-        
-            // //         this.projects.clear();
-            // //         dataObject.Projects.forEach(p => this.projects[p.Name] = new Project(p.Name, p.ImageUrl, p.SiteUrl));
-        
-            // //         this.portfolioItems.clear();
-            // //         dataObject.PortfolioItems.forEach(pi => this.portfolioItems[pi.Title] = new PortfolioItem(pi.Title, pi.Description, pi.WidgetCode));
-        
-            // //         this.listeners.forEach(l => l());
-            // //     })
-            // //     .catch((error) => {
-            // //         console.log("Filed to load user profile: " + error);
-            // //     })
-            // //     .finally(() => {
-            // //     });    
-
-            readPublicStorageFile(fullyQualifiedUserId, USER_PROFILE_FILENAME).then(dataObject => {
-                //let dataObject = JSON.parse(data);
-    
-                this.name = dataObject.Name;
-                this.description = dataObject.Description;
-                this.quote = dataObject.Quote;
-                this.stxId = dataObject.StxId;
-                this.avatarUrl = dataObject.AvatarUrl;
-                this.title = dataObject.Title;
-                this.biography = dataObject.Biography;
-                this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
-                this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
-    
-                this.socialMediaAccounts.clear();
-                dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
-    
-                this.projects.clear();
-                dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
-    
-                this.portfolioItems.clear();
-                dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
-    
-                this.listeners.forEach(l => l());
-            }).catch(error => {
-                this.name = fullyQualifiedUserId;
-                this.description = "";
-                this.quote = "";
-                this.stxId = "";
-                this.avatarUrl = "";
-                this.title = "";
-                this.biography = "";
-                this.isNftCollectionButtonAvailable = true;
-                this.isDonateButtonAvailable = true;
-
-                this.socialMediaAccounts.clear();
-
-                this.projects.clear();
-
-                this.portfolioItems.clear();
-
-                this.listeners.forEach(l => l());
-            });
-        }        
+            this.#loadPublicProfile(fullyQualifiedUserId);
+            this.IsEditable = false;
+        }
     }
 
     save = () => {
@@ -381,7 +275,6 @@ class UserProfile {
     }
 
     setDefault = () => {
-
         if (userSession.isUserSignedIn()) {
             const options = {
             encrypt: false,
@@ -400,6 +293,96 @@ class UserProfile {
     addListener = (listener) => {
         this.listeners.push(listener);
     }
+
+    #loadPrivateProfile = (fullyQualifiedUserId) => {
+        const options = {
+            decrypt: false,
+        };
+    
+        storage.getFile(USER_PROFILE_FILENAME, options)
+        .then(data => {
+            let dataObject = JSON.parse(data);
+            this.#initProperties(dataObject);
+        })
+        .catch(err => {
+            console.log(err)
+            this.#initPropertiesEmpty(fullyQualifiedUserId);
+        });
+    }
+
+    #loadPublicProfile = (fullyQualifiedUserId) => {
+        readPublicStorageFile(fullyQualifiedUserId, USER_PROFILE_FILENAME)
+        .then(dataObject => {
+            this.#initProperties(dataObject);
+        })
+        .catch(err => {
+            console.log(err);
+            this.#initPropertiesEmpty(fullyQualifiedUserId);
+        });
+    }
+
+    #initProperties = (dataObject) => {
+        this.name = dataObject.Name;
+        this.description = dataObject.Description;
+        this.quote = dataObject.Quote;
+        this.stxId = dataObject.StxId;
+        this.avatarUrl = dataObject.AvatarUrl;
+        this.title = dataObject.Title;
+        this.biography = dataObject.Biography;
+        this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
+        this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
+
+        this.socialMediaAccounts.clear();
+        dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
+
+        this.projects.clear();
+        dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
+
+        this.portfolioItems.clear();
+        dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
+
+        this.listeners.forEach(l => l());
+    }
+
+    #initPropertiesEmpty = (fullyQualifiedUserId) => {
+        this.name = fullyQualifiedUserId;
+        this.description = "";
+        this.quote = "";
+        this.stxId = "";
+        this.avatarUrl = "";
+        this.title = "";
+        this.biography = "";
+        this.isNftCollectionButtonAvailable = true;
+        this.isDonateButtonAvailable = true;
+
+        this.socialMediaAccounts.clear();
+
+        this.projects.clear();
+
+        this.portfolioItems.clear();
+
+        this.listeners.forEach(l => l());
+    }
   }
 
   export default UserProfile;
+
+// The below code is not working at the moment due to a bug in the Stacks Storage library.
+// For now we will work around using the readUserProfile function.
+//
+// const options = {
+//     decrypt: false,
+//     verify: false,
+//     username: fullyQualifiedUserId,
+//     app: "http://localhost:3000",
+//     //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
+// };
+
+// storage.getFile(USER_PROFILE_FILENAME, options)
+//     ...
+//     })
+//     .catch((error) => {
+//         console.log("Filed to load user profile: " + error);
+//     })
+//     .finally(() => {
+//     });    

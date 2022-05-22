@@ -5,6 +5,7 @@
   "dependencies": {
     "@stacks/auth": "^2.0.1",
     "@stacks/connect": "^6.4.1",
+    "@stacks/network": "^4.1.0",
     "@stacks/profile": "^2.0.1",
     "@stacks/storage": "^2.0.1",
     "@testing-library/jest-dom": "^5.16.2",
