@@ -168,7 +168,7 @@
     margin-bottom: 40px;
 }
 
-.radio-button-container {
+.nft-show-option-radio-button-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -177,12 +177,7 @@
   align-items: center;
 }
 
-.radio-button {
-  display: flex;
-  flex-direction: row;
-}
-
-.radio-label {
+.nft-show-option-radio-label {
   color: var(--white);
   font-family: var(--font-family-inter);
   font-size: var(--font-size-xs);

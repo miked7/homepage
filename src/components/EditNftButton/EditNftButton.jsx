@@ -34,9 +34,9 @@ const EditNftButton = ({ title, description, isShow, buttonText, onConfirm, onCa
             <div className="nft-button-wrapper">
                 <ActionButton text={buttonText} onClick={() => onClickNftButton()} isEnabled={isButtonShown} />
             </div>
-            <div className="radio-button-container">
-            <input type="radio" value="show" name="options" onChange={onIsShownChanged} checked={isButtonShown} /><div className="radio-label">Display Button</div>
-            <input type="radio" value="hide" name="options" onChange={onIsShownChanged} checked={!isButtonShown} /><div className="radio-label">Hide</div>
+            <div className="nft-show-option-radio-button-container">
+            <input type="radio" value="show" name="options" onChange={onIsShownChanged} checked={isButtonShown} /><div className="nft-show-option-radio-label">Display Button</div>
+            <input type="radio" value="hide" name="options" onChange={onIsShownChanged} checked={!isButtonShown} /><div className="nft-show-option-radio-label">Hide</div>
             </div>
             <div className="edit-button-container">
                 <div className="command-button-box">

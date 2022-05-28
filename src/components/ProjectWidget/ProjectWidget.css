@@ -68,6 +68,11 @@
     white-space: nowrap;
     margin: 10px;
     flex-wrap: wrap;
+    font-family: var(--font-family-sfprotext-bold);
+    font-size: var(--font-size-13px);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.16px;
 }
 
 .project-widget-description {
@@ -77,6 +82,11 @@
     margin: 10px;
     min-height: 15px;
     flex-wrap: wrap;
+    font-family: var(--font-family-sfprotext-bold);
+    font-size: var(--font-size-13px);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.16px;
 }
 
 .edit-project-popup {

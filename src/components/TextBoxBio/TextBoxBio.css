@@ -4,6 +4,11 @@
   height: 76px;
   margin-top: 7px;
   min-width: 340px;
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
 }
 
 .bio {

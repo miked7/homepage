@@ -101,7 +101,7 @@
     pointer-events: none;
   }
 
-  .radio-button-container {
+  .add-project-radio-button-container {
     display: flex;
     flex-direction: column;
     justify-content: center;

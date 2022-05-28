@@ -48,7 +48,7 @@ const AddProjectWidget = ({ userProfile, onClose }) => {
             <div className="project-close-button-container">
                 <IconButton icon={CloseIcon} onClick={() => onClose()} />
             </div>
-            <div className="radio-button-container">
+            <div className="add-project-radio-button-container">
                 <div className="choice-container">
                     <div className="add-project-radio-container">
                         <input type="radio" value="homepage-choice" name="options" onChange={onIsHomepageTargetProject} checked={isHomepageTargetProject} />
