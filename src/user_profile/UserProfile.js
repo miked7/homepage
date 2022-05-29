@@ -25,8 +25,8 @@ class UserProfile {
       this.avatarUrl = '';
       this.title = '';
       this.biography = '';
-      this.isNftCollectionButtonAvailable = true;
-      this.isDonateButtonAvailable = true;
+      this.isNftCollectionButtonAvailable = false;
+      this.isDonateButtonAvailable = false;
       this.socialMediaAccounts = new Map();
       this.projects = new Map();
       this.portfolioItems = new Map();
@@ -192,7 +192,7 @@ class UserProfile {
     }
 
     get IsEditable() {
-        return userSession.isUserSignedIn();
+        return this.isEditable;
     }
 
     set IsEditable(value) {
@@ -211,7 +211,7 @@ class UserProfile {
             getBnsNamesForAddress(stxUserData.profile.stxAddress.mainnet)
                 .then(bnsNames => {
                     if (bnsNames.includes(fullyQualifiedUserId)) {
-                        this.#loadPrivateProfile(fullyQualifiedUserId);
+                        this.#loadPrivateProfile(fullyQualifiedUserId, stxUserData.profile.stxAddress.mainnet);
                         this.IsEditable = true;
                     }
                     else {
@@ -294,7 +294,7 @@ class UserProfile {
         this.listeners.push(listener);
     }
 
-    #loadPrivateProfile = (fullyQualifiedUserId) => {
+    #loadPrivateProfile = (fullyQualifiedUserId, stxId) => {
         const options = {
             decrypt: false,
         };
@@ -303,6 +303,7 @@ class UserProfile {
         .then(data => {
             let dataObject = JSON.parse(data);
             this.#initProperties(dataObject);
+            this.StxId = stxId; // HACK - Overwrite Stacks Id.
         })
         .catch(err => {
             console.log(err)

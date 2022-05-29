@@ -1,19 +1,12 @@
 .faviconsandyorange {
   align-items: flex-end;
-  background-color: #fb6969;
+  background-color: transparent;
   display: flex;
-  height: 32px;
-  margin-left: 40px;
-  margin-top: 16px;
   overflow: hidden;
-  padding: 0 1px;
-  width: 32px;
 }
 
 .sandy-2006-no-bg {
-  height: 34px;
-  margin-bottom: -2px;
-  margin-left: 5px;
-  width: 25px;
+  height: 48px;
+  width: 48px;
 }
 
