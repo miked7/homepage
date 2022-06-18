@@ -35,6 +35,15 @@ class UserProfile {
       this.listeners = [];
     }
 
+    // User Id
+    get UserId() {
+        return this.#userId;
+    }
+
+    get Domain() {
+        return this.#domain;
+    }
+
     // Name
     get Name() {
         return this.name;

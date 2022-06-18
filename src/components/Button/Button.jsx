@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-const ActionButton = ({ text, onClick }) => {
+const Button = ({ text, onClick }) => {
 
   return (
     <div className="button-regular" onClick={() => onClick()}>
@@ -12,4 +12,4 @@ const ActionButton = ({ text, onClick }) => {
     );
 }
 
-export default ActionButton;
+export default Button;

@@ -20,6 +20,8 @@ body {
   width: 1440px;
 }
 
+/**/
+
 .nav-bar {
   background-color: var(--eerie-black);
   box-shadow: 0px 1px 4px #b4faf140;
@@ -29,6 +31,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+}
+
+.stacked-group-2 {
+  align-items: center;
+  display: flex;
+  position: relative;
 }
 
 .get-domain-name__container {
@@ -52,6 +60,8 @@ body {
   margin-left: 8px;
   width: 24px;
 }
+
+/**/
 
 .content {
   display: flex;
@@ -90,11 +100,4 @@ body {
   white-space: nowrap;
   width: 340px;
 }
-
-.stacked-group-2 {
-  align-items: center;
-  display: flex;
-  position: relative;
-}
-
 
