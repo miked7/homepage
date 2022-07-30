@@ -1,17 +1,32 @@
 .card-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 322px;
-  margin-left: 172px;
+  /* margin-left: 172px; */
   position: relative;
   width: 340px;
+  margin: 0px 12px 0px 12px;
 }
 
 .social-stack {
   align-items: center;
   display: flex;
   flex-direction: column;
+  /* position: absolute;
   left: 44px;
-  position: absolute;
-  top: 101px;
+  top: 101px; */
   width: 252px;
+}
+
+.bio-container-small-screen {
+  margin-top: 20px;
+  display: inline;
+}
+
+@media (min-width: 740px) {
+  .bio-container-small-screen {
+    display: none;
+  }
 }
 

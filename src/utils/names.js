@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const BNS_ADDRESS_SERVER = "https://stacks-node-api.stacks.co";
-const BNS_ADDRESS_PATH = "v1/addresses/stacks";
+const API_HOST = "https://stacks-node-api.stacks.co";
+const API_BNS_NAMES_FOR_ADDRESS = "v1/addresses/stacks";
+const API_NAME_SUBDOMAINS = "v1/names/{0}/subdomains";
 
 const stxAddressMap = new Map();
 
@@ -11,7 +12,7 @@ export const getBnsNamesForAddress = (stxAddress) => {
             resolve(stxAddressMap.get(stxAddress));
         }
         else {
-            const namesUrl = `${BNS_ADDRESS_SERVER}/${BNS_ADDRESS_PATH}/${stxAddress}`;
+            const namesUrl = `${API_HOST}/${API_BNS_NAMES_FOR_ADDRESS}/${stxAddress}`;
             axios.get(namesUrl).then(res => {
                 stxAddressMap.set(stxAddress, res.data.names);
                 resolve(res.data.names);
@@ -22,3 +23,15 @@ export const getBnsNamesForAddress = (stxAddress) => {
         }
     });
 }
+
+export const getNameSubdomains = (name) => {
+    return new Promise((resolve, reject) => {
+        const subdomainsUrl = `${API_HOST}/${API_NAME_SUBDOMAINS}`.format(name);
+        axios.get(subdomainsUrl).then(res => {
+            resolve(res.data);
+        }).catch(err => {
+            console.log(err);
+            reject(err);
+        });
+    });
+};

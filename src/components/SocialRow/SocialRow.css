@@ -6,10 +6,6 @@
   flex-wrap: wrap;
 }
 
-.social-row.social-row-1 {
-  margin-top: 12px;
-}
-
 .edit-popup {
   position: fixed;
   top: 50%;

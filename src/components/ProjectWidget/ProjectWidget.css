@@ -1,9 +1,7 @@
 .project-widget-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    min-width: 300px;
-    min-height: 120px;
+    flex-wrap: nowrap;
     height: auto;
     padding: 10px;
 }
@@ -35,6 +33,7 @@
 .project-widget-content-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     cursor: pointer;
 }
 
@@ -48,8 +47,8 @@
 }
 
 .project-widget-image {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 200px;
+    max-height: 200px;
     padding: 10px;
 }
 
@@ -57,8 +56,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: auto;
-    height: 120px;
+    width: 170px;
+    height: 150px;
 }
 
 .project-widget-title {
@@ -73,6 +72,8 @@
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .project-widget-description {
@@ -87,6 +88,8 @@
     font-style: normal;
     font-weight: 700;
     letter-spacing: 0.16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .edit-project-popup {

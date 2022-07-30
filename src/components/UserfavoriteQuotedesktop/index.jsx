@@ -15,10 +15,10 @@ function UserfavoriteQuotedesktop(props) {
   return (
     <div className="quote">
       <div className="quote-text bio-quote">
-        { (quote !== "") || userProfile.IsEditable ? <span className="span1">"</span> : <p hidden/> }
+        { (quote !== "") || userProfile.IsEditable ? <span className="quote-span">"</span> : <p hidden/> }
         <InlineEditor2 value={quote} defaultValue="click to edit quote" setValue={(qte) => userProfile.Quote = qte} userProfile={userProfile} />
-        { (quote !== "") || userProfile.IsEditable ? <span className="span1">"</span> : <p hidden/> }
-          {/* <span className="span1">{spanText}</span>
+        { (quote !== "") || userProfile.IsEditable ? <span className="quote-span">"</span> : <p hidden/> }
+          {/* <span className="quote-span">{spanText}</span>
           <span className="span2">{spanText2}</span> */}
       </div>
     </div>

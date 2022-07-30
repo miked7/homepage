@@ -303,6 +303,13 @@ class UserProfile {
         this.listeners.push(listener);
     }
 
+    removeListener = (listener) => {
+        var index = this.listeners.indexOf(listener);
+        if (index !== -1) {
+            this.listeners.splice(index, 1);
+        }
+    }
+
     #loadPrivateProfile = (fullyQualifiedUserId, stxId) => {
         const options = {
             decrypt: false,

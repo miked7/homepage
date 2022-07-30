@@ -1,12 +1,12 @@
 .quote {
   align-items: flex-start;
   display: inline-flex;
-  height: 61px;
   justify-content: flex-start;
-  left: 10px;
+  min-height: 61px;
   min-width: 320px;
-  position: absolute;
-  top: 184px;
+  /* position: absolute;
+  left: 10px;
+  top: 184px; */
 }
 
 .quote-text {
@@ -18,17 +18,10 @@
   flex-direction: row;
 }
 
-.span1 {
+.quote-span {
   font-family: var(--font-family-arial-italicmt);
   font-size: var(--font-size-xl);
   letter-spacing: 0;
   line-height: 22px;
   flex-basis: auto;
-}
-
-.span2 {
-  font-family: var(--font-family-arial-italicmt);
-  font-size: var(--font-size-l);
-  letter-spacing: 0.20px;
-  line-height: 20px;
 }

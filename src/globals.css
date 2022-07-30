@@ -17,6 +17,8 @@
   src: url("static/fonts/SF-Pro-Text-Regular.otf") format("opentype");
 }
 
+/* mobile responsive breakpoint 700px  */
+
 .screen a {
   display: contents;
   text-decoration: none;

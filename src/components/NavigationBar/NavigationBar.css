@@ -2,6 +2,7 @@
     background-color: var(--eerie-black);
     box-shadow: 0px 1px 4px #b4faf140;
     display: flex;
+    flex-direction: row;
     height: 64px;
     width: 100%;
     justify-content: space-between;
@@ -12,22 +13,30 @@
   .stacked-group-2 {
     align-items: center;
     display: flex;
-    position: relative;
+    flex-direction: row;
+    /* position: relative; */
+    width: 100%;
+    justify-content: flex-end;
   }
   
   .get-domain-name__container {
     display: flex;
     flex-direction: row;
     cursor: pointer;
-    margin-right: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 100%;
+    justify-content: flex-end;
   }
   
   .get-domain-name__text {
     color: var(--white);
     font-family: var(--font-family-inter);
-    font-size: var(--font-size-s2);
+    /* font-size: var(--font-size-s2); */
     letter-spacing: 0;
-    line-height: 22px;
+    /* line-height: 22px; */
+    align-self: center;
+    font-size: 16;
     white-space: nowrap;
   }
   
@@ -40,8 +49,7 @@
   .user-domain-name__container {
     display: flex;
     flex-direction: row;
-    cursor: pointer;
-    margin-right: 30px;
+    margin-right: 20px;
   }
 
   .user-domain-name__text {
@@ -51,4 +59,14 @@
     letter-spacing: 0;
     line-height: 22px;
     white-space: nowrap;
+  }
+
+  .authenticate-button-container {
+    display: inline;
+  }
+  
+  @media (max-width: 740px) {
+    .authenticate-button-container {
+      display: none;
+    }
   }

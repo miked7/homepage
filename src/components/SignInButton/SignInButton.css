@@ -1,6 +1,6 @@
 .sign-in-button__container {
-    align-items: flex-start;
     display: flex;
+    align-items: stretch;
     height: 40px;
     justify-content: center;
     min-width: 67px;
@@ -9,6 +9,7 @@
   
   .sign-in-button {
     align-items: center;
+    justify-content: center;
     background-color: var(--anakiwa);
     border-radius: 4px;
     display: flex;
@@ -28,6 +29,7 @@
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
+    overflow: hidden;
   }
   
   

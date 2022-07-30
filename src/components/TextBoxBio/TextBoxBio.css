@@ -1,7 +1,7 @@
 .text-box-bio {
   align-items: flex-start;
   display: flex;
-  height: 76px;
+  /* height: 76px; */
   margin-top: 7px;
   min-width: 340px;
   color: var(--white);

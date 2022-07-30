@@ -1,10 +1,10 @@
-.creator-id-description {
+.creator-id-container {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  /* position: absolute;
   left: 0;
-  position: absolute;
-  top: 0;
+  top: 0; */
   width: 340px;
 }
 
@@ -15,7 +15,7 @@
   width: 340px;
 }
 
-.title-2 {
+.creator-title {
   color: var(--anakiwa);
   font-weight: 500;
   line-height: 38px;
