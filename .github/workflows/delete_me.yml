@@ -1,0 +1,26 @@
+name: Show Me the S3cr3tz
+on: [push]
+
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up secret file
+      env:
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+        EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+        EC2_TARGET: ${{ secrets.EC2_TARGET }}
+        EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
+      run: |
+        echo $EC2_HOST >> secrets.txt
+        echo $EC2_SSH_KEY >> secrets.txt
+        echo $EC2_TARGET >> secrets.txt
+        echo $EC2_USERNAME >> secrets.txt
+
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
