@@ -28,9 +28,10 @@ function CardAvatarAndBio(props) {
 
   const avatarFilePickerOnChange = () => {
     let fileInput = document.getElementById('file');
-    uploadFile(fileInput.files[0])
+    uploadFile(fileInput.files[0], "avatar")
       .then(url =>  {
         userProfile.AvatarUrl = url;
+        userProfile.save();
       })
       .catch(error => {
         alert(error);

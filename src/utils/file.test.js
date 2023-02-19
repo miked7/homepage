@@ -1,4 +1,4 @@
-import { getAppStorageFromZoneFile } from "./file";
+import { getAppStorageFromZoneFile, getFilename } from "./file";
 
 test('get appstorager test', () => {
   var appUrl = "http://localhost:3000";
@@ -13,3 +13,10 @@ test('get appstorager test 2', () => {
   var expectedAppStorage = 'https://gaia.blockstack.org/hub/1HTYBdbV4oGRp6Z9nRyG2UVnJkAxjoMB9Y/';
   expect(getAppStorageFromZoneFile(appUrl, zoneFileString) === expectedAppStorage);
   });
+
+  test('getFilename test', () => {
+    expect(getFilename("https://michael-thompson.mixmi.app/path/to/file.jpg") === "file.jpg");
+    expect(getFilename("C:\\michael-thompson.mixmi.app\\path\\to\\file.jpg") === "file.jpg");
+    });
+
+  

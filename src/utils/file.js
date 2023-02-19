@@ -5,17 +5,17 @@ import { getPerson, getUserData, userSession, authenticate } from '../utils/auth
 
 const storage = new Storage({ userSession });
 
-export const uploadFile = (targetFile) => {
+export const uploadFile = (targetFile, destName) => {
     const options = {
         encrypt: false,
     };
 
     return new Promise((resolve, reject) => {
-        storage.deleteFile(targetFile.name).then(() => {
+        storage.deleteFile(destName).then(() => {
             var reader = new FileReader();
             reader.onload = (event) => {
             var dataArrayBuffer = event.target.result;
-            storage.putFile(targetFile.name, dataArrayBuffer, options)
+            storage.putFile(destName, dataArrayBuffer, options)
                 .then((url) => {
                     resolve(url);
                 })
@@ -33,7 +33,7 @@ export const uploadFile = (targetFile) => {
           var reader = new FileReader();
           reader.onload = (event) => {
           var dataArrayBuffer = event.target.result;
-          storage.putFile(targetFile.name, dataArrayBuffer, options)
+          storage.putFile(destName, dataArrayBuffer, options)
               .then((url) => {
                   resolve(url);
               })
@@ -50,6 +50,22 @@ export const uploadFile = (targetFile) => {
     });
 }
 
+export const deleteFile = (destName) => {
+  return new Promise((resolve, reject) => {
+    storage.deleteFile(destName).then(() => {
+      resolve();
+    })
+    .catch(err => {
+      console.log(err);
+      reject(err);
+    });
+  });
+}
+
+export const getFilename = (fullPath) => {
+  return fullPath.replace(/^.*[\\\/]/, '');
+}
+
 // Workaround for bug with Stacks public storage
 export const readPublicStorageFile = (userX, filename) => {
     return new Promise ((resolve1, reject1) =>{
@@ -61,7 +77,7 @@ export const readPublicStorageFile = (userX, filename) => {
           axios.get(zonefile4)
              .then(result => {
                 const zoneFileString = JSON.stringify(result.data[0].decodedToken.payload.claim.appsMeta)
-                const storageUrl = getAppStorageFromZoneFile(window.location.origin, zoneFileString);
+                const storageUrl = getAppStorageFromZoneFile(`https://${userX}`/*window.location.origin*/, zoneFileString);
                 const getFile = storageUrl + filename;
                 axios.get(getFile)
                   .then((fileContents) => {

@@ -6,15 +6,15 @@ import Project from './Project';
 import PortfolioItem from './PortfolioItem';
 import { getBnsNamesForAddress } from '../utils/names'
 
-export const USER_PROFILE_FILENAME = "UserProfile.json";
+const USER_PROFILE_FILENAME = "UserProfile.json";
 
 const storage = new Storage({ userSession });
 
-export class UserProfile {
+class UserProfile {
     #userId;
     #domain;
 
-    constructor(userId, domain, dataObject) {
+    constructor(userId, domain) {
       this.#userId = userId;
       this.#domain = domain;
 
@@ -33,10 +33,6 @@ export class UserProfile {
       this.isEditable = false;
 
       this.listeners = [];
-
-      if (dataObject) {
-        this.#initProperties(dataObject);
-      }
     }
 
     // User Id
@@ -176,9 +172,9 @@ export class UserProfile {
         return this.projects;
     }
  
-    addProject = (name, description, imageUrl, siteUrl, profileId) => {
+    addProject = (name, description, imageUrl, siteUrl) => {
         var id = this.projects.size;
-        this.projects.set(id, new Project(id, name, description, imageUrl, siteUrl, profileId));
+        this.projects.set(id, new Project(id, name, description, imageUrl, siteUrl));
         this.listeners.forEach(l => l());
     }
 
@@ -257,7 +253,7 @@ export class UserProfile {
             var _projects = [];
         
             this.Projects.forEach((value) => {
-                _projects.push({Id: value.Id, Name: value.Name, Description: value.Description, ImageUrl: value.ImageUrl, SiteUrl: value.SiteUrl, ProfileId: value.ProfileId});
+                _projects.push({Id: value.Id, Name: value.Name, Description: value.Description, ImageUrl: value.ImageUrl, SiteUrl: value.SiteUrl});
             });
 
             var _portfolioItems = []; //Array.from(this.PortfolioItems.values());
@@ -363,7 +359,7 @@ export class UserProfile {
         dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
 
         this.projects.clear();
-        dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl, p.ProfileId)));
+        dataObject.Projects.forEach(p => this.projects.set(p.Id, new Project(p.Id, p.Name, p.Description, p.ImageUrl, p.SiteUrl)));
 
         this.portfolioItems.clear();
         dataObject.PortfolioItems.forEach(pi => this.portfolioItems.set(pi.Id, new PortfolioItem(pi.Id, pi.Title, pi.Description, pi.WidgetCode)));
@@ -393,23 +389,3 @@ export class UserProfile {
   }
 
   export default UserProfile;
-
-// The below code is not working at the moment due to a bug in the Stacks Storage library.
-// For now we will work around using the readUserProfile function.
-//
-// const options = {
-//     decrypt: false,
-//     verify: false,
-//     username: fullyQualifiedUserId,
-//     app: "http://localhost:3000",
-//     //zoneFileLookupURL: 'https://core.blockstack.org/v1/names/'
-// };
-
-// storage.getFile(USER_PROFILE_FILENAME, options)
-//     ...
-//     })
-//     .catch((error) => {
-//         console.log("Filed to load user profile: " + error);
-//     })
-//     .finally(() => {
-//     });    

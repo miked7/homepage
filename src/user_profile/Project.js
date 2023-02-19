@@ -4,13 +4,15 @@ class Project {
     #description;
     #imageUrl;
     #siteUrl;
+    #profileId;
 
-    constructor(id, name, description, imageUrl, siteUrl) {
+    constructor(id, name, description, imageUrl, siteUrl, profileId) {
       this.#id = id;
       this.#name = name;
       this.#description = description;
       this.#imageUrl = imageUrl;
       this.#siteUrl = siteUrl;
+      this.#profileId = profileId;
 
       this.listeners = [];
     }
@@ -25,6 +27,7 @@ class Project {
 
     set Name(value) {
         this.#name = value;
+        this.listeners.forEach(l => l());
     }
 
     get Description() {
@@ -33,6 +36,7 @@ class Project {
 
     set Description(value) {
         this.#description = value;
+        this.listeners.forEach(l => l());
     }
 
     get ImageUrl() {
@@ -41,6 +45,7 @@ class Project {
 
     set ImageUrl(value) {
         this.#imageUrl = value;
+        this.listeners.forEach(l => l());
     }
 
     get SiteUrl() {
@@ -49,6 +54,17 @@ class Project {
 
     set SiteUrl(value) {
         this.#siteUrl = value;
+        this.listeners.forEach(l => l());
+    }
+
+    get ProfileId() {
+        return this.#profileId;
+        this.listeners.forEach(l => l());
+    }
+
+    set ProfileId(value) {
+        this.#profileId = value;
+        this.listeners.forEach(l => l());
     }
 
     addListener = (listener) => {

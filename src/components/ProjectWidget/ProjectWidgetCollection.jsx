@@ -22,7 +22,7 @@ const ProjectWidgetCollection = ({ userProfile }) => {
 
   return (
       <div className="project-widget-collection-container">
-          <div className="project-widget-collection-title">Projects</div>
+          <div className="project-widget-collection-title">Links</div>
         <div className="project-widget-collection-items-container">
             { projects.map((p, index) => <ProjectWidget className="project-widget" project={p} userProfile={userProfile} key={index} />) }
         </div>

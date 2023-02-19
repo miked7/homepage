@@ -26,7 +26,7 @@ export const getBnsNamesForAddress = (stxAddress) => {
 
 export const getNameSubdomains = (name) => {
     return new Promise((resolve, reject) => {
-        const subdomainsUrl = `${API_HOST}/${API_NAME_SUBDOMAINS}`.format(name);
+        const subdomainsUrl = `${API_HOST}/v1/names/${name}/subdomains`;
         axios.get(subdomainsUrl).then(res => {
             resolve(res.data);
         }).catch(err => {
