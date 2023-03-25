@@ -5,6 +5,7 @@ import ActionButton from "../ActionButton/ActionButton";
 import ReactModal from 'react-modal';
 import EditNftButton from "../EditNftButton/EditNftButton"
 import { getPerson, getUserData, userSession, authenticate } from '../../utils/auth';
+import CopyIcon from './../../static/img/copy-16.png';
 
 function TextGourpSTXWallet(props) {
   const { userProfile } = props;
@@ -45,7 +46,16 @@ function TextGourpSTXWallet(props) {
         </ReactModal>
       </div>
       
-      <div className="nft-button-container">
+      <div className="stx-id-container">
+        <div className="stx-id">
+          { userProfile.StxId.substr(0, 3) + "..." + userProfile.StxId.substr(userProfile.StxId.length - 3, userProfile.StxId.length - 1) }
+        </div>
+        <div className="stx-id-copy">
+          <img className="stx-id-copy-img" src={CopyIcon} onClick={() => navigator.clipboard.writeText(userProfile.StxId)} />
+        </div>
+      </div>
+
+      {/* <div className="nft-button-container">
         <div className="nft-button">
           { isDontateButtonAvailable || userProfile.IsEditable ? <ActionButton text="GIMME STX" onClick={() => {}} isEnabled={isDontateButtonAvailable} /> : <p hidden/> }
         </div>
@@ -59,7 +69,7 @@ function TextGourpSTXWallet(props) {
             onConfirm={(isAvailable) => { userProfile.IsDonateButtonAvailable = isAvailable; setIsDontateButtonEditorOpen(false); }}
             onCancel={() => setIsDontateButtonEditorOpen(false)} />
         </ReactModal>
-      </div>
+      </div> */}
     </div>
   );
 }

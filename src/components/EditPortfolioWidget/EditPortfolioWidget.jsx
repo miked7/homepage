@@ -4,24 +4,34 @@ import ActionButton from "../ActionButton/ActionButton"
 import Button from "../Button/Button"
 import IconButton from "../IconButton/IconButton";
 import CloseIcon from './../../static/img/close_icon.png';
+import MultiLineEditor from '../MultiLineEditor/MultiLineEditor'
 
-const EditPortfolioWidget = ({ portfolioItem, onClose }) => {
-    const [title, setTitle] = useState(portfolioItem.Title);
-    const [description, setDescription] = useState(portfolioItem.Description);
-    const [widgetCode, setWidgetCode] = useState(portfolioItem.WidgetCode);
+const EditPortfolioWidget = ({ userProfile, portfolioItem, onClose }) => {
+    const [title, setTitle] = useState(portfolioItem ? portfolioItem.Title : "My Title");
+    const [description, setDescription] = useState(portfolioItem ? portfolioItem.Description : "My Description");
+    const [widgetCode, setWidgetCode] = useState(portfolioItem ? portfolioItem.WidgetCode : "");
 
     useEffect(() => {
-        portfolioItem.addListener(() => {
-            setTitle(portfolioItem.Title);
-            setDescription(portfolioItem.Description);
-            setWidgetCode(portfolioItem.WidgetCode);
-        })
+        if (portfolioItem) {
+            portfolioItem.addListener(() => {
+                setTitle(portfolioItem.Title);
+                setDescription(portfolioItem.Description);
+                setWidgetCode(portfolioItem.WidgetCode);
+            });
+        }
       }, []);
 
     const OnConfirmButton = () => {
-        portfolioItem.Title = title;
-        portfolioItem.Description =description;
-        portfolioItem.WidgetCode = widgetCode;
+        if (portfolioItem) {
+            portfolioItem.Title = title;
+            portfolioItem.Description = description;
+            portfolioItem.WidgetCode = widgetCode;
+        }
+        else {
+            userProfile.addPortfolioItem(title, description, widgetCode);
+        }
+        
+        userProfile.save();
         onClose();
     };
 
@@ -31,21 +41,29 @@ const EditPortfolioWidget = ({ portfolioItem, onClose }) => {
                 <IconButton icon={CloseIcon} onClick={() => onClose()} />
             </div>
             <div className="title-and-text">
-                <div className="social-bar title-font">Title:</div>
-                <input type="text" className="edit-portfolio-item-input-text" defaultValue={title} onChange={e => setTitle(e.target.value)} />
-                <p className="edit-portfolio-label description-font">Description:</p>
-                <input type="text" className="edit-portfolio-item-input-text" defaultValue={description} onChange={e => setDescription(e.target.value)} />
+                <div className="social-bar title-font">EMBED MEDIA</div>
             </div>
             <div className="widget-code-editor-container">
-                <p className="edit-portfolio-label description-font">Code:</p>
-                <textarea className="widget-code-editor-textarea" defaultValue={widgetCode} onChange={e => setWidgetCode(e.target.value)} />
+                <p className="edit-portfolio-label description-font">
+                    You can embed all sorts of media --
+                    <br/>
+                    <br/>
+                    A YouTube vid, TikTok, SoundCloud playlist, or and NFT
+                    <br/>
+                    <br/>
+                    Copy the embed code from its source and paste it into the box below</p>
+                <MultiLineEditor 
+                    initialValue={widgetCode}
+                    label="paste code here <code>...</code>"
+                    onChange={(newValue) => setWidgetCode(newValue)}
+                    isEnabled={true} />
             </div>
             <div className="command-button-box">
                 <div className="command-button">
                     <Button text="Cancel" onClick={() => onClose()} />
                 </div>
                 <div className="command-button">
-                    <ActionButton text="Confirm" onClick={() => OnConfirmButton()} isEnabled={true} />
+                    <ActionButton text="Confirm" onClick={() => OnConfirmButton()} isEnabled={ widgetCode } />
                 </div>
             </div>
         </div>

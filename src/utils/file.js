@@ -72,8 +72,18 @@ export const readPublicStorageFile = (userX, filename) => {
       var nameLookupURL = "https://stacks-node-api.mainnet.stacks.co/v1/names/" + userX;
       axios.get(nameLookupURL)
         .then(result => {
-          const zoneFileJson = parseZoneFile(result.data.zonefile)
-          const zonefile4 = zoneFileJson.uri[0].target
+
+          // Stacks 2.0 version
+          //const zoneFileJson = parseZoneFile(result.data.zonefile)
+          //const zonefile4 = zoneFileJson.uri[0].target
+
+          // Stacks 2.1 version
+          const {zonefile} = result.data;
+          const zonefile1 = zonefile.split('"');
+          const zonefile2 = zonefile1[1];
+          const zonefile3 = zonefile2.replace(/\\/g,'');
+          const zonefile4 = zonefile3.replace('.json/','.json');
+
           axios.get(zonefile4)
              .then(result => {
                 const zoneFileString = JSON.stringify(result.data[0].decodedToken.payload.claim.appsMeta)

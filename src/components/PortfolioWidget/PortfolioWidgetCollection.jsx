@@ -11,7 +11,6 @@ import EditPortfolioWidget from "../EditPortfolioWidget/EditPortfolioWidget";
 const PortfolioWidgetCollection = ({ userProfile }) => {
     const [portfolioItems, setPortfolioItems] = useState(Array.from(userProfile.PortfolioItems.values()));
     const [isPortfolioItemEditorOpen, setIsPortfolioItemEditorOpen] = useState(false);
-    const [editingPortfolioItemId, setEditingPortfolioItemId] = useState(-1);
 
     useEffect(() => {
         userProfile.addListener(() => {
@@ -20,22 +19,16 @@ const PortfolioWidgetCollection = ({ userProfile }) => {
         })
       }, []);
 
-      const onAddNewPortfolioItem = () => {
-        var newPortfolioItemId = userProfile.addPortfolioItem("empty", "empty", "empty");
-        setEditingPortfolioItemId(newPortfolioItemId);
-        setIsPortfolioItemEditorOpen(true);
-      }
-
   return (
       <div className="portfolio-widget-collection-container">
         <div className="portfolio-widget-collection-items-container">
             { portfolioItems.map((pi, index) => <PortfolioWidget className="portfolio-widget" portfolioItem={pi} userProfile={userProfile} key={index} />) }
         </div>
         <div className="add-portfolio-widget-button">
-            { userProfile.IsEditable ? <AddWidgetButton onClick={() => {onAddNewPortfolioItem();}} /> : <p hidden/> }
+            { userProfile.IsEditable ? <AddWidgetButton onClick={() => { setIsPortfolioItemEditorOpen(true) }} /> : <p hidden/> }
             <ReactModal className="edit-popup" isOpen={isPortfolioItemEditorOpen} contentLabel="Portfolio">
-            <EditPortfolioWidget 
-                portfolioItem={portfolioItems[editingPortfolioItemId]}
+            <EditPortfolioWidget
+                userProfile={userProfile}
                 onClose={() => setIsPortfolioItemEditorOpen(false)} />
         </ReactModal>
         </div>

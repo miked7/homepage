@@ -17,13 +17,12 @@ const PortfolioWidget = ({ portfolioItem, userProfile }) => {
         { userProfile.IsEditable ? <img className="delete-icon-portfolio-widget" src={DeleteIcon} onClick={() => userProfile.removePortfolioItem(portfolioItem.Id)} /> : <p hidden/> }
         <ReactModal className="edit-popup" isOpen={isPortfolioItemEditorOpen} contentLabel="Portfolio">
             <EditPortfolioWidget 
+                userProfile={userProfile}
                 portfolioItem={portfolioItem}
                 onClose={() => setIsPortfolioItemEditorOpen(false)} />
         </ReactModal>
         </div>
         <div className="portfolio-widget-content-container">
-            <div className="portfolio-widget-title titleleft">{portfolioItem.Title}</div>
-            <div className="portfolio-widget-description subtitles">{portfolioItem.Description}</div>
             <div className="portfolio-widget-code" dangerouslySetInnerHTML={{ __html: portfolioItem.WidgetCode }} />
         </div>
       </div>);

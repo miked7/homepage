@@ -25,3 +25,30 @@
 .nft-button {
   margin: 0px 10px 0px 10px;
 }
+
+.stx-id-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.stx-id {
+  display: flex;
+  align-self: center;
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px 10px
+}
+
+.stx-id-copy {
+  display: flex;
+}
+
+.stx-id-copy-img {
+  align-self: center;
+  /* margin: 12px 12px; */
+  cursor: pointer;
+}

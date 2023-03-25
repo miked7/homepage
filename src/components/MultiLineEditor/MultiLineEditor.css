@@ -1,0 +1,38 @@
+.multi-line-editor-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+}
+
+.multi-line-editor-item--enabled {
+    flex-grow: 10;
+    background-color: var(--white);
+    align-items: center;
+    border-radius: 6px 6px 6px 6px;
+    display: flex;
+}
+
+.multi-line-editor-item--disabled {
+    flex-grow: 10;
+    background-color: #999;
+    align-items: center;
+    border-radius: 6px 6px 6px 6px;
+    display: flex;
+}
+
+.multi-line-editor-item--enabled:hover {
+    border: 1px solid #999;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.multi-line-editor-textarea {
+    background-color: transparent;
+    border: 0;
+    padding: 8px;
+    width: 100%;
+    Height: 300px;
+    border-radius: 6px 6px 6px 6px;
+  }
