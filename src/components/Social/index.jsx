@@ -34,11 +34,36 @@ function Social(props) {
     }
   }
 
+  const getUrl = () => {
+    switch (socialMediaAccount.Provider) {
+      case "twitter":
+        return "http://www.twitter.com/";
+
+      case "instagram":
+        return "http://www.instagram.com/";
+
+      case "mixCloud":
+        return "https://www.mixcloud.com/";
+
+      case "youTube":
+        return "https://www.youtube.com/";
+
+      case "tiktok":
+        return "https://www.tiktok.com/";
+
+      default:
+        return "http://www.twitter.com/";
+    }
+  }
+
   return (
     <div className={`social-2`}>
-      <div className="stacked-group">
+      <div className="stacked-group" onClick={()=> window.open(socialMediaAccount.Uid.includes("http") ? socialMediaAccount.Uid : getUrl(), "_blank")}>
       <img className="icon-style" src={getIcon()} />
-        <div className="social-handle profile-description">{socialMediaAccount.Uid}</div>
+      <a className="social-handle profile-description">
+        {
+          socialMediaAccount.Uid.lastIndexOf('/') > 0 ? socialMediaAccount.Uid.substring(socialMediaAccount.Uid.lastIndexOf('/')+1) : socialMediaAccount.Uid
+          }</a>
       </div>
     </div>
   );

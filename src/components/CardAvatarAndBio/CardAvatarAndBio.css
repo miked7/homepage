@@ -26,13 +26,11 @@
   cursor: pointer;
 }
 
-.bio-container-large-screen {
-  display: inline;
-}
 
-@media (max-width: 740px) {
+
+/* @media (max-width: 740px) {
   .bio-container-large-screen {
     display: none;
   }
-}
+} */
 

@@ -14,14 +14,14 @@ function CardUserInfo(props) {
   return (
     <div className="card-user-info">
       <TextGroupCreatorIdDescr userProfile={userProfile}/>
+      <div className="bio-container">
+        <TextBoxBio userProfile={userProfile} />
+      </div>
       <div className="social-stack">
         <SocialRow userProfile={userProfile} />
       </div>
       <UserfavoriteQuotedesktop userProfile={userProfile}/>
       <TextGourpSTXWallet userProfile={userProfile} />
-      <div className="bio-container-small-screen">
-        <TextBoxBio userProfile={userProfile} />
-      </div>
     </div>
   );
 }

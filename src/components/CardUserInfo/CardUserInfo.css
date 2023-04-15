@@ -19,14 +19,6 @@
   width: 252px;
 }
 
-.bio-container-small-screen {
-  margin-top: 20px;
+.bio-container {
   display: inline;
 }
-
-@media (min-width: 740px) {
-  .bio-container-small-screen {
-    display: none;
-  }
-}
-

@@ -45,9 +45,6 @@ function CardAvatarAndBio(props) {
         <input type='file' id='file' ref={avatarFilePicker} style={{display: 'none'}} onChange={avatarFilePickerOnChange} />
         { userProfile.IsEditable ? <img className="edit-icon" src={EditIcon} onClick={avatarFilePickerClick} /> : <p hidden/> }
       </div>
-      <div className="bio-container-large-screen">
-        <TextBoxBio userProfile={userProfile} />
-      </div>
     </div>
   );
 }

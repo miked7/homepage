@@ -71,6 +71,8 @@ const EditSocialMediaAccounts = ({ userProfile, onCancel }) => {
             userProfile.removeSocialMediaAccount("tiktok");
         }
 
+        userProfile.save();
+
         onCancel();
     };
 
