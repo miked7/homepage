@@ -32,6 +32,17 @@
   align-items: center;
 }
 
+.stx-id-label {
+  display: flex;
+  align-self: center;
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px 10px
+}
+
 .stx-id {
   display: flex;
   align-self: center;

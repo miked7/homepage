@@ -48,6 +48,7 @@ function TextGourpSTXWallet(props) {
       </div>
       
       <div className="stx-id-container">
+        <div className="stx-id-label">STX wallet</div>
         <div className="stx-id">
           { userProfile.StxId.substr(0, 3) + "..." + userProfile.StxId.substr(userProfile.StxId.length - 3, userProfile.StxId.length - 1) }
         </div>

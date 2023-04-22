@@ -15,9 +15,9 @@
 
 .image-avatar {
   border: 1px solid var(--anakiwa);
-  height: 340px;
+  height: 400px;
   object-fit: cover;
-  width: 340px;
+  width: 400px;
 }
 
 .edit-icon {
