@@ -27,7 +27,7 @@ const ProjectWidgetCollection = ({ userProfile }) => {
             { projects.map((p, index) => <ProjectWidget className="project-widget" project={p} userProfile={userProfile} key={index} />) }
         </div>
         <div className="add-project-widget-button">
-            { userProfile.IsEditable ? <AddWidgetButton onClick={() => setIsAddProjectOpen(true)} /> : <p hidden/> }
+            { userProfile.IsEditable ? <AddWidgetButton onClick={() => setIsAddProjectOpen(true)} text={ userProfile.IsEditable ? "Add links to another mixmi profile or url here" : ""} /> : <p hidden/> }
             <ReactModal className="edit-popup" isOpen={isAddProjectOpen} contentLabel="Project">
                 <AddProjectWidget userProfile={userProfile} onClose={() => setIsAddProjectOpen(false)} />
         </ReactModal>

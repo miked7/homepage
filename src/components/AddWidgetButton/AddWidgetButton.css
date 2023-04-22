@@ -1,6 +1,6 @@
 .add-widget-button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     width: 100%;
     height: auto;
@@ -17,6 +17,21 @@
 .add-widget-button-image {
     width: 32px;
     height: 32px;
-    align-self: center;
     cursor: pointer;
+}
+
+.add-widget-button-text-left {
+    width: 100%;
+}
+
+.add-widget-button-text-right {
+    display: flex;
+    align-content: center;
+    font-family: var(--font-family-arial-italicmt);
+    color: var(--polar);
+    font-size: var(--font-size-13px);
+    line-height: 32px;
+    text-align: left;
+    width: 100%;
+    padding: 0px 10px;
 }

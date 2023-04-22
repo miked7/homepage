@@ -25,7 +25,7 @@ const PortfolioWidgetCollection = ({ userProfile }) => {
             { portfolioItems.map((pi, index) => <PortfolioWidget className="portfolio-widget" portfolioItem={pi} userProfile={userProfile} key={index} />) }
         </div>
         <div className="add-portfolio-widget-button">
-            { userProfile.IsEditable ? <AddWidgetButton onClick={() => { setIsPortfolioItemEditorOpen(true) }} /> : <p hidden/> }
+            { userProfile.IsEditable ? <AddWidgetButton onClick={() => { setIsPortfolioItemEditorOpen(true) }} text={ userProfile.IsEditable ? "Add embed code for playlists, NFTs, videos and more" : ""} /> : <p hidden/> }
             <ReactModal className="edit-popup" isOpen={isPortfolioItemEditorOpen} contentLabel="Portfolio">
             <EditPortfolioWidget
                 userProfile={userProfile}

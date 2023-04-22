@@ -4,11 +4,16 @@ import ActionButton from "../ActionButton/ActionButton"
 import Button from "../Button/Button"
 import IconButton from "../IconButton/IconButton";
 import CloseIcon from './../../static/img/close_icon.png';
+import Editor from "../Editor/Editor";
 
-const EditNftButton = ({ title, description, isShow, buttonText, onConfirm, onCancel }) => {
+const EditNftButton = ({ userProfile, title, description, isShow, buttonText, onConfirm, onCancel }) => {
     const [isButtonShown, setIsButtonShown] = useState(isShow);
 
     const onClickNftButton = () => {
+    };
+
+    const onMarketplaceChanged = newValue => {
+        userProfile.NftMarketplaceUrl = newValue;
     };
 
     const onIsShownChanged = e => {
@@ -20,6 +25,7 @@ const EditNftButton = ({ title, description, isShow, buttonText, onConfirm, onCa
 
     const OnConfirmButton = () => {
         onConfirm(isButtonShown);
+        userProfile.save();
     };
 
     return (
@@ -35,8 +41,11 @@ const EditNftButton = ({ title, description, isShow, buttonText, onConfirm, onCa
                 <ActionButton text={buttonText} onClick={() => onClickNftButton()} isEnabled={isButtonShown} />
             </div>
             <div className="nft-show-option-radio-button-container">
-            <input type="radio" value="show" name="options" onChange={onIsShownChanged} checked={isButtonShown} /><div className="nft-show-option-radio-label">Display Button</div>
-            <input type="radio" value="hide" name="options" onChange={onIsShownChanged} checked={!isButtonShown} /><div className="nft-show-option-radio-label">Hide</div>
+                <input type="radio" value="show" name="options" onChange={onIsShownChanged} checked={isButtonShown} /><div className="nft-show-option-radio-label">Display Button</div>
+                <input type="radio" value="hide" name="options" onChange={onIsShownChanged} checked={!isButtonShown} /><div className="nft-show-option-radio-label">Hide</div>
+            </div>
+            <div className="edit-nft-marketplace-container">
+                <Editor initialValue={userProfile.NftMarketplaceUrl} label="enter url" onChange={(newValue) => onMarketplaceChanged(newValue)} isEnabled={isButtonShown} />
             </div>
             <div className="edit-button-container">
                 <div className="command-button-box">

@@ -27,6 +27,7 @@ export class UserProfile {
       this.biography = '';
       this.isNftCollectionButtonAvailable = false;
       this.isDonateButtonAvailable = false;
+      this.nftMarketplaceUrl = '';
       this.socialMediaAccounts = new Map();
       this.projects = new Map();
       this.portfolioItems = new Map();
@@ -149,9 +150,19 @@ export class UserProfile {
     }
 
     set IsDonateButtonAvailable(value) {
-        if (this.isDonateButtonAvailable != value)
-        {
+        if (this.isDonateButtonAvailable != value) {
             this.isDonateButtonAvailable = value;
+            this.listeners.forEach(l => l());
+        }
+    }
+
+    get NftMarketplaceUrl() {
+        return this.nftMarketplaceUrl;
+    }
+
+    set NftMarketplaceUrl(value) {
+        if (this.nftMarketplaceUrl !== value) {
+            this.nftMarketplaceUrl = value;
             this.listeners.forEach(l => l());
         }
     }
@@ -276,6 +287,7 @@ export class UserProfile {
                 Biography : this.biography,
                 IsNftCollectionButtonAvailable : this.isNftCollectionButtonAvailable,
                 IsDonateButtonAvailable: this.isDonateButtonAvailable,
+                NftMarketplaceUrl : this.nftMarketplaceUrl,
                 SocialMediaAccounts : _socialMediaAccounts,
                 Projects : _projects,
                 PortfolioItems : _portfolioItems
@@ -358,6 +370,7 @@ export class UserProfile {
         this.biography = dataObject.Biography;
         this.isNftCollectionButtonAvailable = dataObject.IsNftCollectionButtonAvailable;
         this.isDonateButtonAvailable = dataObject.IsDonateButtonAvailable;
+        this.nftMarketplaceUrl = dataObject.NftMarketplaceUrl ?? `https://gamma.io/${this.stxId}`;
 
         this.socialMediaAccounts.clear();
         dataObject.SocialMediaAccounts.forEach(sma => this.socialMediaAccounts.set(sma.Provider, new SocialMediaAccount(sma.Provider, sma.Uid)));
@@ -381,6 +394,7 @@ export class UserProfile {
         this.biography = "";
         this.isNftCollectionButtonAvailable = true;
         this.isDonateButtonAvailable = true;
+        this.nftMarketplaceUrl = `https://gamma.io/${this.stxId}`;
 
         this.socialMediaAccounts.clear();
 

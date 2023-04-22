@@ -192,3 +192,13 @@ input[type=radio] {
   width: 1.5em;
   height: 1.5em;
 }
+
+.edit-nft-marketplace-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  align-items: center;
+  width: 100%;
+}

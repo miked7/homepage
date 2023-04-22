@@ -25,7 +25,7 @@ function TextGourpSTXWallet(props) {
   }, []);
 
   const onClickNftCollectionButton = () => {
-    window.open(`https://gamma.io/${userProfile.StxId}`);
+    window.open(userProfile.NftMarketplaceUrl);
   };
 
   return (
@@ -37,10 +37,11 @@ function TextGourpSTXWallet(props) {
         { userProfile.IsEditable ? <img className="edit-icon-nft-buttons" src={EditIcon} onClick={() => setIsNftCollectionButtonEditorOpen(true)} /> : <p hidden/> }
         <ReactModal className="edit-popup" isOpen={isNftCollectionButtonEditorOpen} contentLabel="Social Media">
           <EditNftButton 
+            userProfile={userProfile}
             title="NFT FLEX BUTTON"
             description="Display your NFTs connected to this account."
             isShow={isNftCollectionButtonAvailable}
-            buttonText="SHOW MY NFTs"
+            buttonText="SEE MY NFTs"
             onConfirm={(isAvailable) => { userProfile.IsNftCollectionButtonAvailable = isAvailable; setIsNftCollectionButtonEditorOpen(false); }}
             onCancel={() => setIsNftCollectionButtonEditorOpen(false)} />
         </ReactModal>
