@@ -7,7 +7,6 @@ import AddWidgetButton from "../AddWidgetButton/AddWidgetButton";
 import ProjectWidget from "./ProjectWidget"
 import ReactModal from 'react-modal';
 import AddProjectWidget from "../AddProjectWidget/AddProjectWidget";
-//import EditProjectWidget from "../EditProjectWidget/EditProjectWidget";
 
 const ProjectWidgetCollection = ({ userProfile }) => {
     const [projects, setProjects] = useState(Array.from(userProfile.Projects.values()));
