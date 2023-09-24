@@ -5,6 +5,7 @@ import Button from "../Button/Button"
 import IconButton from "../IconButton/IconButton";
 import CloseIcon from './../../static/img/close_icon.png';
 import MultiLineEditor from '../MultiLineEditor/MultiLineEditor'
+import { setIframeSize } from "../../utils/html";
 
 const EditPortfolioWidget = ({ userProfile, portfolioItem, onClose }) => {
     const [title, setTitle] = useState(portfolioItem ? portfolioItem.Title : "My Title");
@@ -25,10 +26,10 @@ const EditPortfolioWidget = ({ userProfile, portfolioItem, onClose }) => {
         if (portfolioItem) {
             portfolioItem.Title = title;
             portfolioItem.Description = description;
-            portfolioItem.WidgetCode = widgetCode;
+            portfolioItem.WidgetCode = setIframeSize(widgetCode, 300, 200);
         }
         else {
-            userProfile.addPortfolioItem(title, description, widgetCode);
+            userProfile.addPortfolioItem(title, description, setIframeSize(widgetCode, 300, 200));
         }
         
         userProfile.save();

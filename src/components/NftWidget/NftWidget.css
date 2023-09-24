@@ -1,0 +1,17 @@
+.portfolio-widget-content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* max-height: 300px; */
+    max-width: 1024px; 
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.portfolio-widget-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* width: 398px;
+    height: 400px; */
+}
